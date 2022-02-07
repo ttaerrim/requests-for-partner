@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { RequestsArray, ISetData } from 'utils/types';
 import Option from './Option';
+import FilterButton from './FilterButton';
 
 const PROCESSING_METHOD = ['밀링', '선반'];
 const INGREDIENT = ['알루미늄', '탄소강', '구리', '합금강', '강철'];
@@ -9,7 +10,9 @@ const INGREDIENT = ['알루미늄', '탄소강', '구리', '합금강', '강철'
 const Filter: React.FC<{
     data: RequestsArray;
     setData: ISetData;
-}> = ({ data, setData }) => {
+    onFiltered(selectedValue: string): void;
+    originData: RequestsArray | null;
+}> = ({ data, setData, onFiltered, originData }) => {
     const [isMethodOpen, setIsMethodOpen] = useState<boolean>(false);
     const [isIngreOpen, setIsIngreOpen] = useState<boolean>(false);
 
@@ -32,33 +35,60 @@ const Filter: React.FC<{
                 재료(1)
             </button>
 
+            {/* {isMethodOpen && (
+                <FilterButton
+                    buttonData={PROCESSING_METHOD}
+                    name="method"
+                    option={PROCESSING_METHOD}
+                    data={data}
+                    setData={setData}
+                    onFiltered={onFiltered}
+                    originData={originData}
+                />
+            )}
+
+            {isIngreOpen && (
+                <FilterButton
+                    buttonData={INGREDIENT}
+                    name="material"
+                    option={INGREDIENT}
+                    data={data}
+                    setData={setData}
+                    onFiltered={onFiltered}
+                    originData={originData}
+                />
+            )} */}
+
             {isMethodOpen && (
                 <div>
-                    {PROCESSING_METHOD.map((item, index) => (
-                        <div>
+                    {PROCESSING_METHOD.map((item, index) => {
+                        return (
                             <Option
+                                name="method"
                                 key={index}
-                                // id={item.id}
                                 option={item}
                                 data={data}
                                 setData={setData}
+                                onFiltered={onFiltered}
+                                originData={originData}
                             />
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             )}
 
             {isIngreOpen && (
                 <div>
                     {INGREDIENT.map((item, index) => (
-                        <div>
-                            <Option
-                                key={index}
-                                option={item}
-                                data={data}
-                                setData={setData}
-                            />
-                        </div>
+                        <Option
+                            name="material"
+                            key={index}
+                            option={item}
+                            data={data}
+                            setData={setData}
+                            onFiltered={onFiltered}
+                            originData={originData}
+                        />
                     ))}
                 </div>
             )}
