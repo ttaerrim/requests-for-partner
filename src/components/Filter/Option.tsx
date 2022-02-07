@@ -2,77 +2,96 @@ import React, { useEffect, useState } from 'react';
 import {
     RequestsArray,
     ISetData,
-    ISetConcatArray,
+    ISetSelectedArray,
     IRequests,
+    ISetSelected,
 } from 'utils/types';
 
+const METHOD = 'method';
+const MATERIAL = 'material';
 const Option: React.FC<{
     option: string;
     setData: ISetData;
     data: RequestsArray;
-    originData: RequestsArray | null;
+    originData: RequestsArray;
     onFiltered(selectedValue: string): void;
     name: string;
-    // id: number;
-}> = ({ option, setData, data, onFiltered, originData, name }) => {
-    const [isCheckedMethod, setIsCheckedMethod] = useState<boolean>(false);
-    const [isCheckedMaterial, setIsCheckedMaterial] = useState<boolean>(false);
-    const [selectedTargetName, setSelectedTargetName] = useState<string | null>(
-        null
-    );
-    const [selectedValue, setSelectedValue] = useState<
-        (string | ConcatArray<string>)[]
-    >([]);
-    const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
-    const [selectedMaterial, setSelectedMaterial] = useState<string | null>(
-        null
-    );
-
+    selectedMethod: (string | ConcatArray<string>)[];
+    setSelectedMethod: ISetSelectedArray;
+    selectedMaterial: (string | ConcatArray<string>)[];
+    setSelectedMaterial: ISetSelectedArray;
+}> = ({
+    option,
+    setData,
+    data,
+    onFiltered,
+    originData,
+    name,
+    selectedMethod,
+    setSelectedMethod,
+    selectedMaterial,
+    setSelectedMaterial,
+}) => {
     const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-        // const selectedValue = event.currentTarget.value;
         const target = e.currentTarget;
-        console.log(target);
-        // setSelectedValue(target.value);
-        if (target.name === 'method') {
-            setSelectedMethod(target.value);
-        }
-        if (target.name === 'material') {
-            setSelectedMaterial(target.value);
+        if (target.checked) {
+            setSelected(target);
+        } else {
+            setSelectedInit(target);
         }
     };
-    const onFilter = (selectedValue: string) => {
-        // if (가공방식 && 재료 암것도 없으면) setData(originalData)
-        // else {
-        //          const filteredList = data.reduce((acc, curr)=>{
-        // const methodCondition = method ? cur.methodStatus === method : true;
-        //  const
-        // })
-        // }
-        // if (selectedTargetName === 'method') {
-        //     setData(data.filter((item) => item.method.includes(selectedValue)));
-        // }
-        // if (selectedTargetName === 'material') {
-        //     setData(
-        //         data.filter((item) => item.material.includes(selectedValue))
-        //     );
-        // }
+
+    const setSelected = (target: EventTarget & HTMLInputElement) => {
+        if (target.name === METHOD) {
+            setSelectedMethod(selectedMethod.concat(target.value));
+        }
+        if (target.name === MATERIAL) {
+            setSelectedMaterial(selectedMaterial.concat(target.value));
+        }
+    };
+
+    const setSelectedInit = (target: EventTarget & HTMLInputElement) => {
+        if (target.name === METHOD) {
+            setSelectedMethod(
+                selectedMethod.filter((method) => method !== target.value)
+            );
+        }
+        if (target.name === MATERIAL) {
+            setSelectedMaterial(
+                selectedMaterial.filter((metarial) => metarial !== target.value)
+            );
+        }
+    };
+    const onFilter = () => {
+        if (!selectedMaterial && !selectedMethod) {
+            setData(originData);
+        } else {
+            const newData = originData.reduce<IRequests[]>((acc, curr) => {
+                const selectedMethodCondition =
+                    selectedMethod && selectedMethod.length > 0
+                        ? // ? curr.method.includes(selectedMethod)
+                          selectedMethod.every((i) =>
+                              curr.method.includes(i.toString())
+                          )
+                        : true;
+                const selectedMaterialCondition =
+                    selectedMaterial && selectedMaterial.length > 0
+                        ? selectedMaterial.every((i) =>
+                              curr.material.includes(i.toString())
+                          )
+                        : true;
+                if (selectedMaterialCondition && selectedMethodCondition) {
+                    acc.push(curr);
+                }
+                return acc;
+            }, []);
+            setData(newData);
+        }
     };
 
     useEffect(() => {
-        // if (!isChecked) {
-        //     setData([...data]);
-        // }
-
-        // if (selectedValue) {
-        //     // onFilter(selectedValue);
-        // }
-        // if (selectedValue && !isCheckedMethod && !isCheckedMaterial) {
-        //     setData(originData);
-        // }
-        // const newData = data.reduce<IRequests[]>((acc, curr) => {
-        console.log(selectedMaterial, selectedMethod);
-        // }, {});
-    }, [isCheckedMethod, selectedValue, selectedMaterial, selectedMethod]);
+        onFilter();
+    }, [selectedMaterial, selectedMethod]);
     return (
         <li>
             <input
