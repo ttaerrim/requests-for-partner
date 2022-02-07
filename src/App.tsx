@@ -1,14 +1,14 @@
-import React from "react";
-import GlobalStyle from "./GlobalStyle";
-import Main from "pages/Main";
+import { Fragment } from 'react';
+import GlobalStyle from './GlobalStyle';
+import Main from 'pages/Main';
 
-function App() {
-  return (
-    <>
-      <GlobalStyle />
-      <Main />
-    </>
-  );
-}
+const App = () => {
+    return (
+        <Fragment>
+            <GlobalStyle />
+            <Main />
+        </Fragment>
+    );
+};
 
 export default App;
