@@ -18,7 +18,6 @@ const Contents = () => {
     useEffect(() => {
         getData();
     }, []);
-
     const onFiltered = (selectedValue: string) => {
         if (data !== null) {
             setData(data.filter((item) => item.method.includes(selectedValue)));
@@ -29,7 +28,8 @@ const Contents = () => {
         data && isToggled
             ? data.filter((item) => item.status === '상담중')
             : data;
-    if (filteredData === null || data === null) return <div>로딩 중</div>;
+    if (filteredData === null || data === null || originData === null)
+        return <div>로딩 중</div>;
 
     return (
         <div>
