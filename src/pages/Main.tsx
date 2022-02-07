@@ -1,6 +1,6 @@
-import React from 'react';
-import Header from 'components/Header'
-import Contents from 'components/Contents'
+import Header from 'components/Header';
+import Contents from 'components/Contents';
+import styled from 'styled-components';
 
 const Main = () => {
     return (
@@ -10,5 +10,9 @@ const Main = () => {
         </>
     );
 };
+
+const MainContainer = styled.div`
+    display: flex;
+`;
 
 export default Main;
