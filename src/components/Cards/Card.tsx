@@ -45,7 +45,7 @@ const StyledCard = styled.div`
     border: 1px solid #e5e5e5;
     border-radius: 4px;
     padding: 24px 16px;
-
+    margin: 0 40px;
     &:hover {
         border: 2px solid #2196f3;
     }
