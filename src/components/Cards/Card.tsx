@@ -13,20 +13,20 @@ const Card: React.FC<{ item: IRequests }> = ({ item }) => {
                 <table>
                     <tbody>
                         <tr>
-                            <td>도면개수</td>
-                            <td>{item.amount}개</td>
+                            <Normal>도면개수</Normal>
+                            <Bold>{item.count}개</Bold>
                         </tr>
                         <tr>
-                            <td>총 수량</td>
-                            <td>{item.count}개</td>
+                            <Normal>총 수량</Normal>
+                            <Bold>{item.amount}개</Bold>
                         </tr>
                         <tr>
-                            <td>가공 방식</td>
-                            <td>{item.method}</td>
+                            <Normal>가공방식</Normal>
+                            <Bold>{item.method}</Bold>
                         </tr>
                         <tr>
-                            <td>재료</td>
-                            <td>{item.material}</td>
+                            <Normal>재료</Normal>
+                            <Bold>{item.material}</Bold>
                         </tr>
                     </tbody>
                 </table>
@@ -67,11 +67,26 @@ const Period = styled.div`
     font-weight: 400;
     font-size: 14px;
     color: #939fa5;
-    margin-top: 24px; ;
+    margin-top: 24px;
+    margin-bottom: 16px;
 `;
 const Hr = styled.hr`
-    border: 1px solid #e5e5e5;
+    outline: 0.2px solid #e5e5e5;
+    border: 0;
+    height: 0px;
     padding: 0;
-    margin: 0; ;
+    margin-bottom: 18px;
 `;
+
+const Normal = styled.td`
+    font-weight: 400;
+    font-size: 14px;
+    padding: 4px 30px 4px 0;
+`;
+
+const Bold = styled.td`
+    font-weight: 700;
+    font-size: 14px;
+`;
+
 export default Card;
