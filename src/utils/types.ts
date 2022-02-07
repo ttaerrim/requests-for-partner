@@ -16,3 +16,7 @@ export type RequestsArray = IRequests[];
 export type ISetData = React.Dispatch<
     React.SetStateAction<RequestsArray | null>
 >;
+
+export type ISetConcatArray = React.Dispatch<
+    React.SetStateAction<(string | ConcatArray<string>)[]>
+>;
