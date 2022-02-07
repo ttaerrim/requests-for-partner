@@ -11,10 +11,16 @@ const Filter: React.FC<{
     data: RequestsArray;
     setData: ISetData;
     onFiltered(selectedValue: string): void;
-    originData: RequestsArray | null;
+    originData: RequestsArray;
 }> = ({ data, setData, onFiltered, originData }) => {
     const [isMethodOpen, setIsMethodOpen] = useState<boolean>(false);
     const [isIngreOpen, setIsIngreOpen] = useState<boolean>(false);
+    const [selectedMethod, setSelectedMethod] = useState<
+        (string | ConcatArray<string>)[]
+    >([]);
+    const [selectedMaterial, setSelectedMaterial] = useState<
+        (string | ConcatArray<string>)[]
+    >([]);
 
     const openOptionHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         const checkValue = event.currentTarget.value;
@@ -71,6 +77,10 @@ const Filter: React.FC<{
                                 setData={setData}
                                 onFiltered={onFiltered}
                                 originData={originData}
+                                selectedMethod={selectedMethod}
+                                setSelectedMethod={setSelectedMethod}
+                                selectedMaterial={selectedMaterial}
+                                setSelectedMaterial={setSelectedMaterial}
                             />
                         );
                     })}
@@ -88,6 +98,10 @@ const Filter: React.FC<{
                             setData={setData}
                             onFiltered={onFiltered}
                             originData={originData}
+                            selectedMethod={selectedMethod}
+                            setSelectedMethod={setSelectedMethod}
+                            selectedMaterial={selectedMaterial}
+                            setSelectedMaterial={setSelectedMaterial}
                         />
                     ))}
                 </div>
