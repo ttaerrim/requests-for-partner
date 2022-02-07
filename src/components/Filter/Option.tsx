@@ -13,7 +13,8 @@ const Option: React.FC<{
         const newArray = data.filter((item) =>
             item.method.includes(selectedValue)
         );
-        console.log(newArray);
+        setData(newArray);
+        console.log(data);
     };
 
     return (
