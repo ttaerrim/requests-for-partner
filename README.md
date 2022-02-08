@@ -6,6 +6,7 @@
 
 ## 👨‍👨‍👦‍👦 팀원
 
+
 |  이름  |                       Github                        | 담당 기능                                                    |
 | :----: | :-------------------------------------------------: | :----------------------------------------------------------- |
 | 우종원 | [Ubermensch0608](https://github.com/Ubermensch0608) | 카드 컴포넌트 구현, 재사용 가능 컴포넌트 구현, 컴포넌트 분리 |
@@ -13,9 +14,11 @@
 | 이태림 |       [ttaerrim](https://github.com/ttaerrim)       | 필터링 기능 구현                                             |
 | 임수영 |     [penguin311](https://github.com/penguin311)     | CRA 초기 세팅, 토글 기능 구현                                |
 
-담당 기능은 일단 pull request 보고 적었는데 수정하시면 돼요~~!
+
+
 
 ## ⚙ 설치
+
 
 ```
 # clone the project
@@ -42,13 +45,13 @@ $ npm run start
 
 ## 🔗 의존성
 
+
 ```
   "dependencies": {
         "@types/jest": "^27.4.0",
         "@types/node": "^16.11.22",
         "@types/react": "^17.0.39",
         "@types/react-dom": "^17.0.11",
-        "axios": "^0.25.0",
         "concurrently": "^7.0.0",
         "cross-env": "^7.0.3",
         "json-server": "^0.17.0",
@@ -62,9 +65,10 @@ $ npm run start
     },
 ```
 
-안 쓰는 패키지 있으면 삭제하고 올리기
+
 
 ## 📂 파일 구조
+
 
     ├── public
     ├── server
@@ -90,6 +94,7 @@ $ npm run start
 > 또는 vscode File-tree-generator extension 사용
 
 ## ✅ 구현 사항
+
 
 -   [x] typescript 구현
 -   [x] 헤더
@@ -120,10 +125,18 @@ $ npm run start
         -   [x] 메뉴 화면이 왼쪽에서 들어옴
     -   [x] 백그라운드 영역 탭하면 메뉴 close
 
-## 🗺 스크린샷
+## 🧐 한 눈에 보는 기능 
 
-<p align="center"><img src="https://user-images.githubusercontent.com/43867711/153021432-2d78e90b-19c4-41b0-9b03-e7b72661b24e.gif"></p>
-<p align="center"><img src="https://user-images.githubusercontent.com/43867711/153021439-bb44aaa0-6003-442d-918f-4ec2ba009809.gif"></p>
-<p align="center"><img src="https://user-images.githubusercontent.com/28384562/153041154-111a10a3-6b8f-40c2-9d2b-71288e92d4b7.gif" width="600" height="400"></p>
 
+1. 필터링 기능 - 체크박스
+
+<p ><img src="https://user-images.githubusercontent.com/43867711/153021432-2d78e90b-19c4-41b0-9b03-e7b72661b24e.gif" /></p>
+
+2. 필터링 기능 - 토글
+
+<p><img src="https://user-images.githubusercontent.com/43867711/153021439-bb44aaa0-6003-442d-918f-4ec2ba009809.gif" /></p>
+
+3. 반응형 앱 - 모바일 사이즈
+
+<p><img src="https://user-images.githubusercontent.com/93258739/153045828-b8dc7fdc-593d-4bb3-b8ae-e531999bed16.gif" width="600px" height="400px" /></p>
 
