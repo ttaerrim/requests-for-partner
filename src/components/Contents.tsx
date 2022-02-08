@@ -58,16 +58,22 @@ const Wrapper = styled.div`
     display: flex;
     width: 100%;
     height: 100vh;
-    padding: 0 155px 0 155px;
+    padding: 0 155px;
     margin: auto;
     align-content: center;
     flex-direction: column;
+    @media screen and (max-width: 426px) {
+        padding: 0 20px;
+    }
 `;
 
 const CardsWrapper = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-around;
+    @media screen and (max-width: 380px) {
+        padding: 0 20px;
+    }
 `;
 
 const TopUtils = styled.div`

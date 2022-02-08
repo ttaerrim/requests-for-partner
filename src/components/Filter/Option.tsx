@@ -40,6 +40,7 @@ const Option: React.FC<{
         const target = e.currentTarget;
         if (target.checked) {
             setSelected(target);
+            console.log(target.checked);
             setCheckList([...checkList, parseInt(target.id)]);
             // console.log(target);
         } else {
@@ -99,10 +100,15 @@ const Option: React.FC<{
         };
 
         onFilter();
-        // console.log(selectedMaterial, 'selectedMaterial');
-        // console.log(selectedMethod, 'selectedMethod');
-        // console.log(checkList, 'checkList');
-    }, [selectedMaterial, selectedMethod, checkList]);
+        console.log(
+            'selectedMaterial: ',
+            selectedMaterial,
+            'selectedMethod: ',
+            selectedMethod,
+            'checkList: ',
+            checkList
+        );
+    }, [selectedMaterial, selectedMethod, checkList, originData]);
 
     return (
         <List>

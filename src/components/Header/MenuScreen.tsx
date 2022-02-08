@@ -11,11 +11,11 @@ const MenuScreen: React.FC<{ isOpen: boolean; menuOpen: () => void }> = ({
             <BackScreen onClick={menuOpen} isOpen={isOpen}></BackScreen>
             <FrontScreen isOpen={isOpen}>
                 <div>
-                    <img src={logoIconColor} />
+                    <img src={logoIconColor} alt="icon" />
                 </div>
                 <div>
                     <div>
-                        <img src={companyIconBlack} />
+                        <img src={companyIconBlack} alt="icon" />
                         <span>파트너정밀가공</span>
                     </div>
                     <span>로그아웃</span>

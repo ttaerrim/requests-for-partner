@@ -32,13 +32,8 @@ const HeaderContainer = styled.div`
 
     @media screen and (max-width: 380px) {
         height: 44px;
+        justify-content: space-between;
     }
-`;
-
-const HeaderWrapper = styled.div`
-    display: flex;
-    width: 1800px;
-    justify-content: space-between;
 `;
 
 export default Header;

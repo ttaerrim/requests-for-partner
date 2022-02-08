@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const RightSide = () => {
     return (
         <RightBox>
-            <img src={companyIcon} />
+            <img src={companyIcon} alt="icon" />
             <span>A 가공 업체</span>
             <hr />
             <span>로그아웃</span>
