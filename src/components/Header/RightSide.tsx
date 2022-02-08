@@ -15,6 +15,7 @@ const RightSide = () => {
 
 const RightBox = styled.div`
     display: flex;
+    align-items: center;
     flex-direction: row;
     color: #ffffff;
     margin-right: 2.78%;

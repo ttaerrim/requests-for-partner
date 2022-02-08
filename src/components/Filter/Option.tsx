@@ -7,15 +7,13 @@ import {
     IRequests,
     ISetSelected,
 } from 'utils/types';
+import { METHOD, MATERIAL } from 'utils/constants/data';
 
-const METHOD = 'method';
-const MATERIAL = 'material';
 const Option: React.FC<{
     option: string;
     setData: ISetData;
     data: RequestsArray;
     originData: RequestsArray;
-    onFiltered(selectedValue: string): void;
     name: string;
     id: number;
     selectedMethod: (string | ConcatArray<string>)[];
@@ -29,7 +27,6 @@ const Option: React.FC<{
     setData,
     data,
     id,
-    onFiltered,
     originData,
     name,
     selectedMethod,
@@ -102,8 +99,11 @@ const Option: React.FC<{
         };
 
         onFilter();
-        console.log(selectedMaterial, selectedMethod);
+        // console.log(selectedMaterial, 'selectedMaterial');
+        // console.log(selectedMethod, 'selectedMethod');
+        // console.log(checkList, 'checkList');
     }, [selectedMaterial, selectedMethod, checkList]);
+
     return (
         <List>
             <Span>

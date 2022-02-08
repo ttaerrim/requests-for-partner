@@ -1,6 +1,11 @@
 import Button from 'layout/Button';
 import React, { useState, useCallback } from 'react';
-import { INGREDIENT, PROCESSING_METHOD } from 'utils/constants/data';
+import {
+    INGREDIENT,
+    PROCESSING_METHOD,
+    METHOD,
+    MATERIAL,
+} from 'utils/constants/data';
 import { RequestsArray, ISetData } from 'utils/types';
 
 import { downArrow, downArrowWhite, refresh } from 'assets';
@@ -11,9 +16,8 @@ import styled from 'styled-components';
 const Filter: React.FC<{
     data: RequestsArray;
     setData: ISetData;
-    onFiltered(selectedValue: string): void;
     originData: RequestsArray;
-}> = ({ data, setData, onFiltered, originData }) => {
+}> = ({ data, setData, originData }) => {
     const [isMethodOpen, setIsMethodOpen] = useState<boolean>(false);
     const [isIngreOpen, setIsIngreOpen] = useState<boolean>(false);
     const [selectedMethod, setSelectedMethod] = useState<
@@ -32,14 +36,12 @@ const Filter: React.FC<{
 
     const openOptionHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         const checkValue = event.currentTarget.value;
-        if (checkValue === 'method') {
-            setIsMethodOpen((prev) => !prev);
-            setIsMethodOpen(!isMethodOpen);
+        if (checkValue === METHOD) {
+            setIsMethodOpen((isMethodOpen) => !isMethodOpen);
             setIsIngreOpen(false);
         }
-        if (checkValue === 'ingredient') {
-            setIsIngreOpen((prev) => !prev);
-            setIsIngreOpen(!isIngreOpen);
+        if (checkValue === MATERIAL) {
+            setIsIngreOpen((isIngreOpen) => !isIngreOpen);
             setIsMethodOpen(false);
         }
     };
@@ -52,7 +54,7 @@ const Filter: React.FC<{
         setIsMethodOpen(false);
         setIsIngreOpen(false);
     }, []);
-    console.log(selectedMaterial);
+
     return (
         <ButtonsHolder>
             <div>
@@ -79,7 +81,6 @@ const Filter: React.FC<{
                             option={PROCESSING_METHOD}
                             data={data}
                             setData={setData}
-                            onFiltered={onFiltered}
                             originData={originData}
                             selectedMethod={selectedMethod}
                             setSelectedMethod={setSelectedMethod}
@@ -93,7 +94,7 @@ const Filter: React.FC<{
             </div>
             <div>
                 <Button
-                    value="ingredient"
+                    value="material"
                     theme={isIngreOpen && 'deepblue'}
                     onClick={openOptionHandler}
                 >
@@ -119,7 +120,6 @@ const Filter: React.FC<{
                             option={INGREDIENT}
                             data={data}
                             setData={setData}
-                            onFiltered={onFiltered}
                             originData={originData}
                             setCheckList={setMaterialCheckList}
                             checkList={materialcheckList}

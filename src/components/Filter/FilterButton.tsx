@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {
     RequestsArray,
@@ -6,12 +6,12 @@ import {
     ISetSelected,
     ISetSelectedArray,
 } from 'utils/types';
+
 import Option from './Option';
 
 const FilterButton: React.FC<{
     buttonData: string[];
     data: RequestsArray;
-    onFiltered(selectedValue: string): void;
     setData: ISetData;
     originData: RequestsArray;
     name: string;
@@ -26,7 +26,6 @@ const FilterButton: React.FC<{
     buttonData,
     data,
     setData,
-    onFiltered,
     originData,
     option,
     name,
@@ -47,7 +46,6 @@ const FilterButton: React.FC<{
                     data={data}
                     id={index}
                     setData={setData}
-                    onFiltered={onFiltered}
                     originData={originData}
                     selectedMethod={selectedMethod}
                     setSelectedMethod={setSelectedMethod}

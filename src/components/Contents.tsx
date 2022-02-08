@@ -8,23 +8,20 @@ import styled from 'styled-components';
 const Contents = () => {
     const [data, setData] = useState<RequestsArray | null>([]);
     const [originData, setOriginData] = useState<RequestsArray | null>([]);
-    const getData = async () => {
-        const json = await (
-            await fetch('http://localhost:4000/requests')
-        ).json();
-        setData(json);
-        setOriginData(json);
-    };
+    const [isToggled, setIsToggled] = useState<boolean>(false);
 
     useEffect(() => {
+        const getData = async () => {
+            const json = await (
+                await fetch('http://localhost:4000/requests')
+            ).json();
+            setData(json);
+            setOriginData(json);
+        };
+
         getData();
     }, []);
-    const onFiltered = (selectedValue: string) => {
-        if (data !== null) {
-            setData(data.filter((item) => item.method.includes(selectedValue)));
-        }
-    };
-    const [isToggled, setIsToggled] = useState<boolean>(false);
+
     const filteredData =
         data && isToggled
             ? data.filter((item) => item.status === '상담중')
@@ -43,7 +40,6 @@ const Contents = () => {
                     <Filter
                         data={data}
                         setData={setData}
-                        onFiltered={onFiltered}
                         originData={originData}
                     />
 
