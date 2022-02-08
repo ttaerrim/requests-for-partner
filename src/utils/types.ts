@@ -41,6 +41,7 @@ export type IsOpenTypes = {
 
 export interface ButtonProps {
     theme: string;
+    value?: string;
 }
 
 export type ButtonTypes = {
