@@ -40,8 +40,6 @@ const Filter: React.FC<{
         (null | number)[]
     >([]);
 
-    const [materialDatas, setMaterialDatas] = useState<string[]>([]);
-
     const openOptionHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         const checkValue = event.currentTarget.value;
         if (checkValue === METHOD) {
