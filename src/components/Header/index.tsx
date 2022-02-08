@@ -21,19 +21,24 @@ const Header = () => {
         </>
     );
 };
-
 const HeaderContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
     width: 100%;
     min-width: 360px;
     height: 70px;
     background-color: #1565c0;
-    display: flex;
     align-items: center;
-    justify-content: space-between;
 
     @media screen and (max-width: 380px) {
         height: 44px;
     }
+`;
+
+const HeaderWrapper = styled.div`
+    display: flex;
+    width: 1800px;
+    justify-content: space-between;
 `;
 
 export default Header;

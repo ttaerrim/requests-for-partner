@@ -35,32 +35,68 @@ const Contents = () => {
     return (
         <Wrapper>
             <TopUtils>
-                <Filter
-                    data={data}
-                    setData={setData}
-                    onFiltered={onFiltered}
-                    originData={originData}
-                />
-                <Toggle isToggled={isToggled} setIsToggled={setIsToggled} />
+                <Banner>
+                    <div>들어온 요청</div>
+                    <div>파트너님에게 딱 맞는 요청서를 찾아보세요.</div>
+                </Banner>
+                <Filtering>
+                    <Filter
+                        data={data}
+                        setData={setData}
+                        onFiltered={onFiltered}
+                        originData={originData}
+                    />
+
+                    <Toggle isToggled={isToggled} setIsToggled={setIsToggled} />
+                </Filtering>
             </TopUtils>
 
-            <Cards data={filteredData} />
+            <CardsWrapper>
+                <Cards data={filteredData} />
+            </CardsWrapper>
         </Wrapper>
     );
 };
-
+//contents 반응형으로 1400px
 const Wrapper = styled.div`
     display: flex;
     width: 100%;
-    height: 100%;
-    flex-wrap: wrap;
-    flex-direction: column;
+    height: 100vh;
+    padding: 0 155px 0 155px;
+    margin: auto;
     align-content: center;
-    padding: 10px 100px;
+    flex-direction: column;
+`;
+
+const CardsWrapper = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
 `;
 
 const TopUtils = styled.div`
     display: flex;
+    flex-direction: column;
+`;
+const Filtering = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    @media screen and (max-width: 1399px) {
+        flex-direction: column;
+    }
+`;
+const Banner = styled.div`
+    margin: 40px 0 50px 0;
+
+    div:first-child {
+        font-size: 20px;
+        font-weight: 700;
+    }
+    div:last-child {
+        font-size: 16px;
+        font-weight: 400;
+    }
 `;
 
 export default Contents;

@@ -38,7 +38,7 @@ export type ButtonTypes = {
     children?: React.ReactNode;
     type?: string;
     value?: string;
-    theme?: string;
+    theme?: string | boolean;
 };
 
 export type OptionHolderTypes = {
