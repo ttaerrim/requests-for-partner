@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 import LeftSide from './LeftSide';
 import RightSide from './RightSide';
@@ -13,13 +13,13 @@ const Header = () => {
     };
 
     return (
-        <>
+        <Fragment>
             <HeaderContainer>
                 <LeftSide menuOpen={menuOpen} />
                 <RightSide />
             </HeaderContainer>
             <MenuScreen isOpen={isOpen} menuOpen={menuOpen} />
-        </>
+        </Fragment>
     );
 };
 

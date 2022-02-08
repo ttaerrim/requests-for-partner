@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
 import {
     RequestsArray,
     ISetData,
@@ -77,8 +76,7 @@ const Option: React.FC<{
                 const newData = originData.reduce<IRequests[]>((acc, curr) => {
                     const selectedMethodCondition =
                         selectedMethod && selectedMethod.length > 0
-                            ? // ? curr.method.includes(selectedMethod)
-                              selectedMethod.every((i) =>
+                            ? selectedMethod.every((i) =>
                                   curr.method.includes(i.toString())
                               )
                             : true;
