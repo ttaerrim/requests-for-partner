@@ -7,7 +7,7 @@ import {
     IRequests,
 } from 'utils/types';
 import { METHOD, MATERIAL } from 'utils/constants/data';
-import Checkbox from 'layout/Checkbox';
+import { Checkbox } from 'layout/Checkbox';
 const Option: React.FC<{
     option: string;
     setData: ISetData;
@@ -39,7 +39,6 @@ const Option: React.FC<{
         const target = e.currentTarget;
         if (target.checked) {
             setSelected(target);
-            console.log(target.checked);
             setCheckList([...checkList, parseInt(target.id)]);
         } else {
             setSelectedInit(target);
@@ -102,29 +101,16 @@ const Option: React.FC<{
 
     return (
         <List>
-            <Span>
-                <StyledInput
-                    type="checkbox"
-                    name={name}
-                    id={id.toString()}
-                    value={option}
-                    onChange={handleClick}
-                    checked={
-                        checkList ? (checkList as number[]).includes(id) : false
-                    }
-                />
-                <Checkbox
-                    type="checkbox"
-                    name={name}
-                    id={id.toString()}
-                    value={option}
-                    onChange={handleClick}
-                    checked={
-                        checkList ? (checkList as number[]).includes(id) : false
-                    }
-                />
-            </Span>
-            <span>{option}</span>
+            <Checkbox
+                id={id.toString() + option}
+                checked={
+                    checkList ? (checkList as number[]).includes(id) : false
+                }
+                onChange={handleClick}
+                label={option}
+                name={name}
+                value={option}
+            />
         </List>
     );
 };
@@ -136,13 +122,4 @@ const List = styled.div`
     margin: 12px 17px;
 `;
 
-const Span = styled.span`
-    margin-right: 10px;
-`;
-
-const StyledInput = styled.input`
-    width: 18px;
-    height: 18px;
-    border: none;
-`;
 export default Option;

@@ -53,12 +53,11 @@ export type ButtonTypes = {
 
 /** layout/Checkbox.tsx */
 
-export type CheckboxTypes = {
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    children?: React.ReactNode;
-    type?: string;
-    id?: string;
-    value?: string;
-    checked?: boolean;
-    name?: string;
-};
+export interface CheckboxProps {
+    id: string;
+    checked: boolean;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    label?: string | null;
+    name: string;
+    value: string;
+}

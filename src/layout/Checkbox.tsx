@@ -1,71 +1,80 @@
-import styled from 'styled-components';
-import { CheckboxTypes } from 'utils/types';
-const Checkbox = ({
-    onChange,
-    children,
+import styled, { css } from 'styled-components';
+import { CheckboxProps } from 'utils/types';
+
+export const Checkbox = ({
     id,
-    value,
     checked,
+    onChange,
+    label,
     name,
-}: CheckboxTypes) => {
+    value,
+}: CheckboxProps) => {
     return (
-        <div>
-            <StyledCheckbox
-                onChange={onChange}
-                id={id}
-                value={value}
-                checked={checked}
-                name={name}
-                type="checkbox"
-            ></StyledCheckbox>
-        </div>
+        <CheckboxContainer>
+            <CheckBox checked={checked} htmlFor={id}>
+                <HiddenCheckbox
+                    id={id}
+                    type="checkbox"
+                    onChange={onChange}
+                    checked={checked}
+                    name={name}
+                    value={value}
+                />
+                <Icon checked={checked} viewBox="0 0 24 24">
+                    {' '}
+                    <polyline points="19 7 10 17 5 12" />{' '}
+                </Icon>
+            </CheckBox>
+            {label ? <Label htmlFor={id}>{label}</Label> : null}
+        </CheckboxContainer>
     );
 };
+const CheckboxContainer = styled.div`
+    display: flex;
+    align-items: center;
+`;
+const Icon = styled.svg<{ checked: boolean }>`
+    fill: none;
+    stroke: white;
+    stroke-width: 3px;
+    ${({ checked }) => {
+        if (!checked) {
+            return css`
+                display: none;
+            `;
+        }
+    }};
+`;
 
-const StyledCheckbox = styled.input`
-    display: none;
-
-    & + label {
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        border: 2px solid #939fa5;
-        border-radius: 2px;
-        position: relative;
-        /* margin-right: 13px; */
-    }
-    &:checked + label {
-        border: none;
-    }
-    &:checked + label::after {
-        background-color: #2196f3;
-        border-radius: 2px;
-        color: white;
-        content: '✓';
-        font-size: 10px;
-        width: 18px;
-        height: 18px;
-        text-align: center;
+const CheckBox = styled.label<{ checked: boolean }>`
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: ${({ checked }) =>
+        checked ? '1px solid #2196F3' : '2px solid #939fa5'};
+    background: ${({ checked }) => checked && '#2196F3'};
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    ${Icon} {
         position: absolute;
     }
 `;
 
-export default Checkbox;
-/**
- * .input[type="checkbox"] {
-  display: none;
-}
-.input[type="checkbox"] + label {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  border: 1px solid #e3e3e3;
-  border-radius: 4px;
-  position: relative;
-  margin-right: 13px;
-}
-.input:checked + label::after {
-  
-}
+const HiddenCheckbox = styled.input`
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+`;
 
- */
+const Label = styled.label`
+    display: inline-block;
+    padding-left: 12px;
+    cursor: pointer;
+`;

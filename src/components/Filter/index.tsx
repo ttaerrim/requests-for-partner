@@ -70,16 +70,6 @@ const Filter: React.FC<{
         setMaterialCheckList([]);
         setMethodCheckList([]);
     };
-
-    // for (let i = 0; i < data.length; i++) {
-    //     const materialArr = data[i].material;
-    //     for (let j = 0; j < materialArr.length; j++) {
-    //         setMaterialDatas((prevDatas) => {
-    //             return [...prevDatas];
-    //         });
-    //     }
-    // }
-
     return (
         <ButtonsHolder>
             <div>
