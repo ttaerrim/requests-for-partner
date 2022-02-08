@@ -14,7 +14,7 @@ export const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    min-width: 592px;
+    /* min-width: 592px; */
     height: 70px;
     background-color: ${theme.headerBgColor};
     align-items: center;
@@ -44,6 +44,7 @@ export const LeftBox = styled.div`
 
     @media screen and (${theme.mobile}) {
         margin-left: 23px;
+
         & > img:nth-child(1) {
             display: block;
             margin-right: 16px;
@@ -61,10 +62,11 @@ export const ScreenBox = styled.div<{ isOpen: boolean }>`
     left: 0;
     height: 100%;
     width: ${({ isOpen }) => (isOpen ? '100%' : '0')};
-    min-width: ${({ isOpen }) => (isOpen ? '592px' : '0')};
+    /* min-width: ${({ isOpen }) => (isOpen ? '590px' : '0')}; */
     transition: 0.5s;
     @media screen and (${theme.notMobile}) {
         display: none;
+        position: fixed;
     }
 `;
 
