@@ -21,7 +21,7 @@ const Contents = () => {
     useEffect(() => {
         const getData = async () => {
             const json = await (
-                await fetch('http://localhost:4000/requests')
+                await fetch('http://localhost:3001/requests')
             ).json();
 
             setData(json);
