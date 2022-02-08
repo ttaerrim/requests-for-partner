@@ -1,7 +1,9 @@
-import React from 'react';
+import CardList from 'components/Cards/CardList';
 
-const Cards = () => {
-    return <div>Cards</div>;
+import { RequestsArray } from 'utils/types';
+
+const Cards: React.FC<{ data: RequestsArray }> = ({ data }) => {
+    return <CardList data={data} />;
 };
 
 export default Cards;
