@@ -124,6 +124,6 @@ $ npm run start
 
 <p align="center"><img src="https://user-images.githubusercontent.com/43867711/153021432-2d78e90b-19c4-41b0-9b03-e7b72661b24e.gif"></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/43867711/153021439-bb44aaa0-6003-442d-918f-4ec2ba009809.gif"></p>
-<p align="center"><img src="https://user-images.githubusercontent.com/28384562/153041154-111a10a3-6b8f-40c2-9d2b-71288e92d4b7.gif"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/28384562/153041154-111a10a3-6b8f-40c2-9d2b-71288e92d4b7.gif" width="600" height="400"></p>
 
 
