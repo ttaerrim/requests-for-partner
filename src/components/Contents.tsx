@@ -4,7 +4,6 @@ import Filter from 'components/Filter';
 import Cards from 'components/Cards';
 import Toggle from 'components/Toggle';
 import { RequestsArray } from 'utils/types';
-import { JSON_API } from 'helper/Api';
 
 import {
     Banner,
@@ -21,7 +20,7 @@ const Contents = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const json = await (await fetch(`${JSON_API}requests`)).json();
+            const json = await (await fetch('/requests')).json();
 
             setData(json);
             setOriginData(json);
