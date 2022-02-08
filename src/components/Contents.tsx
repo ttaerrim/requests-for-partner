@@ -20,11 +20,7 @@ const Contents = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const json = await (
-                await fetch(
-                    'https://limitless-fjord-71130.herokuapp.com/requests'
-                )
-            ).json();
+            const json = await (await fetch('/requests')).json();
 
             setData(json);
             setOriginData(json);
@@ -33,7 +29,6 @@ const Contents = () => {
         getData();
     }, []);
 
-    console.log(setData);
     const filteredData =
         data && isToggled
             ? data.filter((item) => item.status === '상담중')

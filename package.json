@@ -50,5 +50,6 @@
     },
     "devDependencies": {
         "@types/styled-components": "^5.1.22"
-    }
+    },
+    "proxy": "https://limitless-fjord-71130.herokuapp.com/"
 }
