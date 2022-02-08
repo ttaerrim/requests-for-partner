@@ -8,7 +8,7 @@ import {
     ISetSelected,
 } from 'utils/types';
 import { METHOD, MATERIAL } from 'utils/constants/data';
-
+import Checkbox from 'layout/Checkbox';
 const Option: React.FC<{
     option: string;
     setData: ISetData;
@@ -113,7 +113,17 @@ const Option: React.FC<{
     return (
         <List>
             <Span>
-                <input
+                <StyledInput
+                    type="checkbox"
+                    name={name}
+                    id={id.toString()}
+                    value={option}
+                    onChange={handleClick}
+                    checked={
+                        checkList ? (checkList as number[]).includes(id) : false
+                    }
+                />
+                <Checkbox
                     type="checkbox"
                     name={name}
                     id={id.toString()}
@@ -140,4 +150,9 @@ const Span = styled.span`
     margin-right: 10px;
 `;
 
+const StyledInput = styled.input`
+    width: 18px;
+    height: 18px;
+    border: none;
+`;
 export default Option;

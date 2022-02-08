@@ -29,6 +29,16 @@ export type ISetSelectedArray = React.Dispatch<
     React.SetStateAction<(string | ConcatArray<string>)[]>
 >;
 
+export type OptionHolderTypes = {
+    name?: string;
+};
+
+export type IsOpenTypes = {
+    isOpen?: boolean;
+};
+
+/** layout/Button.tsx */
+
 export interface ButtonProps {
     theme: string;
 }
@@ -41,10 +51,14 @@ export type ButtonTypes = {
     theme?: string | boolean;
 };
 
-export type OptionHolderTypes = {
-    name?: string;
-};
+/** layout/Checkbox.tsx */
 
-export type IsOpenTypes = {
-    isOpen?: boolean;
+export type CheckboxTypes = {
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    children?: React.ReactNode;
+    type?: string;
+    id?: string;
+    value?: string;
+    checked?: boolean;
+    name?: string;
 };
