@@ -12,7 +12,7 @@ const Main = () => {
 };
 
 const MainContainer = styled.div`
-    widht: 100%;
+    width: 100%;
 `;
 
 export default Main;
