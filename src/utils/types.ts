@@ -48,3 +48,18 @@ export type OptionHolderTypes = {
 export type IsOpenTypes = {
     isOpen?: boolean;
 };
+
+export type CheckboxTypes = {
+    className: string;
+    checked: boolean;
+
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
+export interface CheckboxProps {
+    id: string;
+    checked: boolean;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    label?: string | null;
+    name: string;
+    value: string;
+}
