@@ -7,7 +7,10 @@ const Card: React.FC<{ item: IRequests }> = ({ item }) => {
     return (
         <StyledCard>
             <div>
-                <Title>{item.title}</Title>
+                <Title>
+                    <span>{item.title}</span>
+                    {item.status === '상담중' && <OnConsult>상담중</OnConsult>}
+                </Title>
                 <SubTitle>{item.client}</SubTitle>
                 <Period>{item.due}까지 납기</Period>
                 <Hr />
@@ -56,6 +59,17 @@ const Title = styled.div`
     font-weight: 700;
     font-size: 16px;
     color: #323d45;
+    display: flex;
+    justify-content: space-between;
+`;
+
+const OnConsult = styled.span`
+    border: 1px solid #ffa000;
+    border-radius: 12px;
+    color: #ffa000;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 8px;
 `;
 
 const SubTitle = styled.div`
