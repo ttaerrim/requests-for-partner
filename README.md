@@ -33,7 +33,7 @@ $ npm run dev
 ⠀  http://localhost:3000/
 ⠀
 ⠀  Resources
-⠀  http://localhost:4000/requests
+⠀  https://limitless-fjord-71130.herokuapp.com/requests
 ⠀
 ```
 
