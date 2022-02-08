@@ -8,6 +8,7 @@ import {
     ISetSelected,
 } from 'utils/types';
 import { METHOD, MATERIAL } from 'utils/constants/data';
+import { Checkbox } from 'layout/Checkbox';
 
 const Option: React.FC<{
     option: string;
@@ -40,9 +41,7 @@ const Option: React.FC<{
         const target = e.currentTarget;
         if (target.checked) {
             setSelected(target);
-            console.log(target.checked);
             setCheckList([...checkList, parseInt(target.id)]);
-            // console.log(target);
         } else {
             setSelectedInit(target);
             setCheckList(checkList.filter((id) => id !== parseInt(target.id)));
@@ -100,31 +99,20 @@ const Option: React.FC<{
         };
 
         onFilter();
-        console.log(
-            'selectedMaterial: ',
-            selectedMaterial,
-            'selectedMethod: ',
-            selectedMethod,
-            'checkList: ',
-            checkList
-        );
     }, [selectedMaterial, selectedMethod, checkList, originData]);
 
     return (
         <List>
-            <Span>
-                <input
-                    type="checkbox"
-                    name={name}
-                    id={id.toString()}
-                    value={option}
-                    onChange={handleClick}
-                    checked={
-                        checkList ? (checkList as number[]).includes(id) : false
-                    }
-                />
-            </Span>
-            <span>{option}</span>
+            <Checkbox
+                id={id.toString() + option}
+                checked={
+                    checkList ? (checkList as number[]).includes(id) : false
+                }
+                onChange={handleClick}
+                label={option}
+                name={name}
+                value={option}
+            />
         </List>
     );
 };
@@ -134,10 +122,6 @@ const List = styled.div`
     font-size: 14px;
     font-weight: 500;
     margin: 12px 17px;
-`;
-
-const Span = styled.span`
-    margin-right: 10px;
 `;
 
 export default Option;
