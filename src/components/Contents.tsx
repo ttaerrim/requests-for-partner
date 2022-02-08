@@ -23,6 +23,7 @@ const Contents = () => {
             const json = await (
                 await fetch('http://localhost:4000/requests')
             ).json();
+
             setData(json);
             setOriginData(json);
         };
@@ -30,6 +31,7 @@ const Contents = () => {
         getData();
     }, []);
 
+    console.log(setData);
     const filteredData =
         data && isToggled
             ? data.filter((item) => item.status === '상담중')

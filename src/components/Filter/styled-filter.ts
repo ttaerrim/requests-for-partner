@@ -4,9 +4,10 @@ import { IsOpenTypes, OptionHolderTypes } from 'utils/types';
 export const StyledFilterBtn = styled.div<IsOpenTypes>`
     border: 1px solid #939fa5;
     border-radius: 4px;
-    width: 130px;
+    width: 120%;
     height: auto;
     margin-top: 4px;
+    background: #fff;
     position: relative;
     ${({ isOpen }) => {
         if (!isOpen) {
@@ -23,7 +24,6 @@ export const ButtonsHolder = styled.div`
 export const OptionHolder = styled.div<OptionHolderTypes>`
     position: absolute;
     z-index: 100;
-    background: #fff;
     left: ${(props) => props.name === 'meterial' && '263px'};
 `;
 
@@ -48,4 +48,11 @@ export const RefreshIMG = styled.img`
     width: 16px;
     height: 16px;
     margin-right: 12px;
+`;
+
+export const List = styled.div`
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 12px 17px;
 `;

@@ -23,6 +23,7 @@ const StyledButton = styled.button<ButtonProps>`
         if (theme === 'blue') return '#fff';
         else if (theme === 'white') return '#2196F3';
         else if (theme === 'filter') return '#323D45';
+        else if (theme === 'deepblue') return '#fff';
     }};
     background: ${({ theme }) => {
         if (theme === 'blue') return '#2196F3';
