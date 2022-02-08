@@ -28,10 +28,12 @@ const StyledButton = styled.button<ButtonProps>`
         if (theme === 'blue') return '#2196F3';
         else if (theme === 'deepblue') return '#1565C0';
     }};
-    ${({ theme }) => {
-        if (theme === 'deepblue')
+    ${({ value }) => {
+        if (value === 'method' || value === 'material')
             return css`
-                color: white;
+                &:hover {
+                    border: 1px solid #2196f3;
+                }
             `;
     }}
 `;
