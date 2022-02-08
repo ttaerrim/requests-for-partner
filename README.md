@@ -1,6 +1,6 @@
 <h1 align="center"> 요청서 관리 과제 </h1>
 
-<h3 align="center"> 서비스 링크 : </h3>
+<h3 align="center"> 서비스 링크: https://limitless-fjord-71130.herokuapp.com/</h3>
 
 <p align="center"><img width="800" src="https://user-images.githubusercontent.com/43867711/152996199-0eb414c4-0f97-4d30-9578-e6f024cfb325.png" /></p>
 
@@ -25,15 +25,18 @@ $ git clone https://github.com/console-lo9/requests-for-partner.git
 $ cd requests-for-partner
 $ npm ci
 
+# build
+$ npm run build
+
 # start
-$ npm run dev
+$ npm run start
 
 ⠀
 ⠀  You can now view this project in the browser.
-⠀  http://localhost:3000/
+⠀  http://localhost:3001/
 ⠀
 ⠀  Resources
-⠀  http://localhost:4000/requests
+⠀  http://localhost:3001/requests
 ⠀
 ```
 
@@ -47,6 +50,7 @@ $ npm run dev
         "@types/react-dom": "^17.0.11",
         "axios": "^0.25.0",
         "concurrently": "^7.0.0",
+        "cross-env": "^7.0.3",
         "json-server": "^0.17.0",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
@@ -63,6 +67,7 @@ $ npm run dev
 ## 📂 파일 구조
 
     ├── public
+    ├── server
     └── src
         ├── assets
         ├── components
@@ -70,10 +75,10 @@ $ npm run dev
         │   ├── Filter
         │   ├── Header
         │   └── Toggle
-        ├── layout        # 재사용 가능 컴포넌트
+        ├── layout              # 재사용 가능 컴포넌트
         ├── pages
         └── utils
-            └── constants   # 상수 관리
+            └── constants       # 상수 관리
 
 > 작성 후 삭제
 > 참고 (https://www.lesstif.com/lpt/linux-tree-54952142.html)
@@ -117,5 +122,5 @@ $ npm run dev
 
 ## 🗺 스크린샷
 
-<p align="center"><img src="https://im2.ezgif.com/tmp/ezgif-2-0bfd8b1ee4.gif"></p>
-<p align="center"><img src="https://im2.ezgif.com/tmp/ezgif-2-e2b0d60a86.gif"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/43867711/153021432-2d78e90b-19c4-41b0-9b03-e7b72661b24e.gif"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/43867711/153021439-bb44aaa0-6003-442d-918f-4ec2ba009809.gif"></p>
