@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { logoIcon, logoIconColor, hamburger } from 'assets';
+import { logoIcon, hamburger } from 'assets';
 
 const LeftSide: React.FC<{
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
