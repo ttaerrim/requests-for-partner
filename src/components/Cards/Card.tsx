@@ -23,11 +23,11 @@ const Card: React.FC<{ item: IRequests }> = ({ item }) => {
                         </tr>
                         <tr>
                             <Normal>가공방식</Normal>
-                            <Bold>{item.method}</Bold>
+                            <Bold>{item.method.join(', ')}</Bold>
                         </tr>
                         <tr>
                             <Normal>재료</Normal>
-                            <Bold>{item.material}</Bold>
+                            <Bold>{item.material.join(', ')}</Bold>
                         </tr>
                     </tbody>
                 </table>

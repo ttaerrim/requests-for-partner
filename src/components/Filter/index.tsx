@@ -24,6 +24,13 @@ const Filter: React.FC<{
         (string | ConcatArray<string>)[]
     >([]);
 
+    const [methodcheckList, setMethodCheckList] = useState<(null | number)[]>(
+        []
+    );
+    const [materialcheckList, setMaterialCheckList] = useState<
+        (null | number)[]
+    >([]);
+
     const openOptionHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         const checkValue = event.currentTarget.value;
         if (checkValue === 'method') {
@@ -34,14 +41,26 @@ const Filter: React.FC<{
         }
     };
 
+    const handleAllUncheck = () => {
+        setSelectedMethod([]);
+        setSelectedMaterial([]);
+        setMaterialCheckList([]);
+        setMethodCheckList([]);
+    };
     return (
         <div>
             <Button value="method" onClick={openOptionHandler}>
                 가공방식
+                {selectedMethod.length > 0 && (
+                    <span> ({selectedMethod.length})</span>
+                )}
                 <ArrowIMG src={downArrow} alt="drop-down" />
             </Button>
             <Button value="ingredient" onClick={openOptionHandler}>
-                재료(1)
+                재료
+                {selectedMaterial.length > 0 && (
+                    <span> ({selectedMaterial.length})</span>
+                )}
                 <ArrowIMG src={downArrow} alt="drop-down" />
             </Button>
 
@@ -58,6 +77,8 @@ const Filter: React.FC<{
                     setSelectedMethod={setSelectedMethod}
                     selectedMaterial={selectedMaterial}
                     setSelectedMaterial={setSelectedMaterial}
+                    setCheckList={setMethodCheckList}
+                    checkList={methodcheckList}
                 />
             )}
 
@@ -74,11 +95,13 @@ const Filter: React.FC<{
                     setData={setData}
                     onFiltered={onFiltered}
                     originData={originData}
+                    setCheckList={setMaterialCheckList}
+                    checkList={materialcheckList}
                 />
             )}
 
             <span>
-                <RefreshBtn>
+                <RefreshBtn onClick={handleAllUncheck}>
                     <RefreshIMG src={refresh} alt="refresh" /> 필터링 리셋
                 </RefreshBtn>
             </span>
