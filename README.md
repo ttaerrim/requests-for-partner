@@ -75,15 +75,6 @@ $ npm run start
         └── utils
             └── constants       # 상수 관리
 
-> 작성 후 삭제
-> 참고 (https://www.lesstif.com/lpt/linux-tree-54952142.html)
->
-> ```
-> $ tree -N -L 2 -d -I "node_modules"
-> ```
->
-> 또는 vscode File-tree-generator extension 사용
-
 ## ✅ 구현 사항
 
 -   [x] typescript 구현
@@ -127,4 +118,5 @@ $ npm run start
 
 3. 반응형 앱 - 모바일 사이즈
 
-<p><img src="https://user-images.githubusercontent.com/93258739/153045828-b8dc7fdc-593d-4bb3-b8ae-e531999bed16.gif" width="600px" height="400px" /></p>
+<p><img src="https://user-images.githubusercontent.com/43867711/153042232-badf0e8f-b022-4d3d-ac43-fefe188eedd9.gif"></p>
+<p><img src="https://user-images.githubusercontent.com/43867711/153042235-fa195cfd-c2da-44a0-b11c-050041d45144.gif"></p>
