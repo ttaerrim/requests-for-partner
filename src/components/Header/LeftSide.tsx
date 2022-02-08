@@ -7,8 +7,8 @@ const LeftSide: React.FC<{
 }> = ({ menuOpen }) => {
     return (
         <LeftBox>
-            <img src={hamburger} onClick={menuOpen} />
-            <img src={logoIcon} />
+            <img src={hamburger} onClick={menuOpen} alt="icon" />
+            <img src={logoIcon} alt="icon" />
         </LeftBox>
     );
 };

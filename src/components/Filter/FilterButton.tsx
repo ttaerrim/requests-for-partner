@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import styled, { css } from 'styled-components';
 import {
     RequestsArray,
     ISetData,
     ISetSelected,
     ISetSelectedArray,
+    IsOpenTypes,
 } from 'utils/types';
+
 import Option from './Option';
 
 const FilterButton: React.FC<{
     buttonData: string[];
     data: RequestsArray;
-    onFiltered(selectedValue: string): void;
     setData: ISetData;
     originData: RequestsArray;
     name: string;
@@ -22,11 +23,11 @@ const FilterButton: React.FC<{
     setSelectedMaterial: ISetSelectedArray;
     checkList: (null | number)[];
     setCheckList: React.Dispatch<React.SetStateAction<(null | number)[]>>;
+    isOpen: boolean;
 }> = ({
     buttonData,
     data,
     setData,
-    onFiltered,
     originData,
     option,
     name,
@@ -36,9 +37,18 @@ const FilterButton: React.FC<{
     setSelectedMaterial,
     checkList,
     setCheckList,
+    isOpen,
 }) => {
+    // console.log(
+    //     'selectedMaterial: ',
+    //     selectedMaterial,
+    //     'selectedMethod: ',
+    //     selectedMethod,
+    //     'checkList: ',
+    //     checkList
+    // );
     return (
-        <StyledFilterBtn>
+        <StyledFilterBtn isOpen={isOpen}>
             {buttonData.map((item, index) => (
                 <Option
                     key={index}
@@ -47,7 +57,6 @@ const FilterButton: React.FC<{
                     data={data}
                     id={index}
                     setData={setData}
-                    onFiltered={onFiltered}
                     originData={originData}
                     selectedMethod={selectedMethod}
                     setSelectedMethod={setSelectedMethod}
@@ -61,13 +70,20 @@ const FilterButton: React.FC<{
     );
 };
 
-const StyledFilterBtn = styled.div`
+const StyledFilterBtn = styled.div<IsOpenTypes>`
     border: 1px solid #939fa5;
     border-radius: 4px;
     width: 130px;
     height: auto;
     margin-top: 4px;
     position: relative;
+    ${({ isOpen }) => {
+        if (!isOpen) {
+            return css`
+                display: none;
+            `;
+        }
+    }}
 `;
 
 export default FilterButton;

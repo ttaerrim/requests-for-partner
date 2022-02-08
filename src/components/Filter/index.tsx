@@ -1,6 +1,11 @@
 import Button from 'layout/Button';
 import React, { useState, useCallback } from 'react';
-import { INGREDIENT, PROCESSING_METHOD } from 'utils/constants/data';
+import {
+    INGREDIENT,
+    PROCESSING_METHOD,
+    METHOD,
+    MATERIAL,
+} from 'utils/constants/data';
 import { RequestsArray, ISetData } from 'utils/types';
 
 import { downArrow, downArrowWhite, refresh } from 'assets';
@@ -11,11 +16,10 @@ import styled from 'styled-components';
 const Filter: React.FC<{
     data: RequestsArray;
     setData: ISetData;
-    onFiltered(selectedValue: string): void;
     originData: RequestsArray;
-}> = ({ data, setData, onFiltered, originData }) => {
-    const [isMethodOpen, setIsMethodOpen] = useState<boolean>(false);
-    const [isIngreOpen, setIsIngreOpen] = useState<boolean>(false);
+}> = ({ data, setData, originData }) => {
+    const [isMethodOpen, setIsMethodOpen] = useState(false);
+    const [isIngreOpen, setIsIngreOpen] = useState(false);
     const [selectedMethod, setSelectedMethod] = useState<
         (string | ConcatArray<string>)[]
     >([]);
@@ -23,36 +27,42 @@ const Filter: React.FC<{
         (string | ConcatArray<string>)[]
     >([]);
 
-    const [methodcheckList, setMethodCheckList] = useState<(null | number)[]>(
+    const [methodCheckList, setMethodCheckList] = useState<(null | number)[]>(
         []
     );
-    const [materialcheckList, setMaterialCheckList] = useState<
+    const [materialCheckList, setMaterialCheckList] = useState<
         (null | number)[]
     >([]);
 
     const openOptionHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         const checkValue = event.currentTarget.value;
-        if (checkValue === 'method') {
-            setIsMethodOpen((prev) => !prev);
-            setIsMethodOpen(!isMethodOpen);
+        if (checkValue === METHOD) {
+            setIsMethodOpen((isMethodOpen) => !isMethodOpen);
             setIsIngreOpen(false);
         }
-        if (checkValue === 'ingredient') {
-            setIsIngreOpen((prev) => !prev);
-            setIsIngreOpen(!isIngreOpen);
+        if (checkValue === MATERIAL) {
+            setIsIngreOpen((isIngreOpen) => !isIngreOpen);
             setIsMethodOpen(false);
         }
     };
 
-    const handleAllUncheck = useCallback(() => {
+    const closeOptionHandler = () => {
+        setIsMethodOpen(false);
+        setIsIngreOpen(false);
+    };
+
+    const handleAllUncheck = () => {
+        setArraysInit();
+        closeOptionHandler();
+    };
+
+    const setArraysInit = () => {
         setSelectedMethod([]);
         setSelectedMaterial([]);
         setMaterialCheckList([]);
         setMethodCheckList([]);
-        setIsMethodOpen(false);
-        setIsIngreOpen(false);
-    }, []);
-    console.log(selectedMaterial);
+    };
+    console.log(isMethodOpen);
     return (
         <ButtonsHolder>
             <div>
@@ -72,28 +82,26 @@ const Filter: React.FC<{
                     )}
                 </Button>
                 <OptionHolder>
-                    {isMethodOpen && (
-                        <FilterButton
-                            buttonData={PROCESSING_METHOD}
-                            name="method"
-                            option={PROCESSING_METHOD}
-                            data={data}
-                            setData={setData}
-                            onFiltered={onFiltered}
-                            originData={originData}
-                            selectedMethod={selectedMethod}
-                            setSelectedMethod={setSelectedMethod}
-                            selectedMaterial={selectedMaterial}
-                            setSelectedMaterial={setSelectedMaterial}
-                            setCheckList={setMethodCheckList}
-                            checkList={methodcheckList}
-                        />
-                    )}
+                    <FilterButton
+                        isOpen={isMethodOpen}
+                        buttonData={PROCESSING_METHOD}
+                        name="method"
+                        option={PROCESSING_METHOD}
+                        data={data}
+                        setData={setData}
+                        originData={originData}
+                        selectedMethod={selectedMethod}
+                        setSelectedMethod={setSelectedMethod}
+                        selectedMaterial={selectedMaterial}
+                        setSelectedMaterial={setSelectedMaterial}
+                        setCheckList={setMethodCheckList}
+                        checkList={methodCheckList}
+                    />
                 </OptionHolder>
             </div>
             <div>
                 <Button
-                    value="ingredient"
+                    value="material"
                     theme={isIngreOpen && 'deepblue'}
                     onClick={openOptionHandler}
                 >
@@ -108,26 +116,24 @@ const Filter: React.FC<{
                     )}
                 </Button>
                 <OptionHolder>
-                    {isIngreOpen && (
-                        <FilterButton
-                            selectedMethod={selectedMethod}
-                            setSelectedMethod={setSelectedMethod}
-                            selectedMaterial={selectedMaterial}
-                            setSelectedMaterial={setSelectedMaterial}
-                            buttonData={INGREDIENT}
-                            name="material"
-                            option={INGREDIENT}
-                            data={data}
-                            setData={setData}
-                            onFiltered={onFiltered}
-                            originData={originData}
-                            setCheckList={setMaterialCheckList}
-                            checkList={materialcheckList}
-                        />
-                    )}
+                    <FilterButton
+                        isOpen={isIngreOpen}
+                        selectedMethod={selectedMethod}
+                        setSelectedMethod={setSelectedMethod}
+                        selectedMaterial={selectedMaterial}
+                        setSelectedMaterial={setSelectedMaterial}
+                        buttonData={INGREDIENT}
+                        name="material"
+                        option={INGREDIENT}
+                        data={data}
+                        setData={setData}
+                        originData={originData}
+                        setCheckList={setMaterialCheckList}
+                        checkList={materialCheckList}
+                    />
                 </OptionHolder>
             </div>
-            {selectedMethod.length || selectedMaterial.length ? (
+            {selectedMethod.length > 0 || selectedMaterial.length > 0 ? (
                 <RefreshBtn onClick={handleAllUncheck}>
                     <RefreshIMG src={refresh} alt="refresh" />
                     <span>필터링 리셋</span>

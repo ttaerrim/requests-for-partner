@@ -44,3 +44,7 @@ export type ButtonTypes = {
 export type OptionHolderTypes = {
     name?: string;
 };
+
+export type IsOpenTypes = {
+    isOpen?: boolean;
+};
