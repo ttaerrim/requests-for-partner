@@ -3,6 +3,7 @@ import Filter from 'components/Filter';
 import Cards from 'components/Cards';
 import Toggle from 'components/Toggle';
 import { RequestsArray } from 'utils/types';
+import styled from 'styled-components';
 
 const Contents = () => {
     const [data, setData] = useState<RequestsArray | null>([]);
@@ -32,17 +33,34 @@ const Contents = () => {
         return <div>로딩 중</div>;
 
     return (
-        <div>
-            <Filter
-                data={data}
-                setData={setData}
-                onFiltered={onFiltered}
-                originData={originData}
-            />
-            <Toggle isToggled={isToggled} setIsToggled={setIsToggled} />
+        <Wrapper>
+            <TopUtils>
+                <Filter
+                    data={data}
+                    setData={setData}
+                    onFiltered={onFiltered}
+                    originData={originData}
+                />
+                <Toggle isToggled={isToggled} setIsToggled={setIsToggled} />
+            </TopUtils>
+
             <Cards data={filteredData} />
-        </div>
+        </Wrapper>
     );
 };
+
+const Wrapper = styled.div`
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    padding: 10px 100px;
+`;
+
+const TopUtils = styled.div`
+    display: flex;
+`;
 
 export default Contents;

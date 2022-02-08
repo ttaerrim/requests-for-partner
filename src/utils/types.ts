@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface IRequests {
     id: number;
     title: string;
@@ -26,3 +28,19 @@ export type ISetSelected = React.Dispatch<React.SetStateAction<string | null>>;
 export type ISetSelectedArray = React.Dispatch<
     React.SetStateAction<(string | ConcatArray<string>)[]>
 >;
+
+export interface ButtonProps {
+    theme: string;
+}
+
+export type ButtonTypes = {
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    children?: React.ReactNode;
+    type?: string;
+    value?: string;
+    theme?: string;
+};
+
+export type OptionHolderTypes = {
+    name?: string;
+};

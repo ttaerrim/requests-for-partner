@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import {
     RequestsArray,
     ISetData,
@@ -16,14 +17,18 @@ const Option: React.FC<{
     originData: RequestsArray;
     onFiltered(selectedValue: string): void;
     name: string;
+    id: number;
     selectedMethod: (string | ConcatArray<string>)[];
     setSelectedMethod: ISetSelectedArray;
     selectedMaterial: (string | ConcatArray<string>)[];
     setSelectedMaterial: ISetSelectedArray;
+    checkList: (null | number)[];
+    setCheckList: React.Dispatch<React.SetStateAction<(null | number)[]>>;
 }> = ({
     option,
     setData,
     data,
+    id,
     onFiltered,
     originData,
     name,
@@ -31,13 +36,18 @@ const Option: React.FC<{
     setSelectedMethod,
     selectedMaterial,
     setSelectedMaterial,
+    checkList,
+    setCheckList,
 }) => {
     const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
         const target = e.currentTarget;
         if (target.checked) {
             setSelected(target);
+            setCheckList([...checkList, parseInt(target.id)]);
+            // console.log(target);
         } else {
             setSelectedInit(target);
+            setCheckList(checkList.filter((id) => id !== parseInt(target.id)));
         }
     };
 
@@ -93,16 +103,34 @@ const Option: React.FC<{
         onFilter();
     }, [selectedMaterial, selectedMethod]);
     return (
-        <li>
-            <input
-                type="checkbox"
-                name={name}
-                value={option}
-                onChange={handleClick}
-            />
-            <p>{option}</p>
-        </li>
+        <List>
+            <Span>
+                <input
+                    type="checkbox"
+                    name={name}
+                    id={id.toString()}
+                    value={option}
+                    onChange={handleClick}
+                    checked={
+                        checkList ? (checkList as number[]).includes(id) : false
+                    }
+                />
+            </Span>
+            <span>{option}</span>
+        </List>
     );
 };
+
+const List = styled.div`
+    position: relative;
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 12px 17px;
+`;
+
+const Span = styled.span`
+    margin-right: 10px;
+`;
 
 export default Option;

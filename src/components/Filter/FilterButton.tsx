@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 import {
     RequestsArray,
     ISetData,
@@ -19,6 +20,8 @@ const FilterButton: React.FC<{
     setSelectedMethod: ISetSelectedArray;
     selectedMaterial: (string | ConcatArray<string>)[];
     setSelectedMaterial: ISetSelectedArray;
+    checkList: (null | number)[];
+    setCheckList: React.Dispatch<React.SetStateAction<(null | number)[]>>;
 }> = ({
     buttonData,
     data,
@@ -31,15 +34,18 @@ const FilterButton: React.FC<{
     setSelectedMethod,
     selectedMaterial,
     setSelectedMaterial,
+    checkList,
+    setCheckList,
 }) => {
     return (
-        <div>
+        <StyledFilterBtn>
             {buttonData.map((item, index) => (
                 <Option
                     key={index}
                     name={name}
                     option={item}
                     data={data}
+                    id={index}
                     setData={setData}
                     onFiltered={onFiltered}
                     originData={originData}
@@ -47,10 +53,20 @@ const FilterButton: React.FC<{
                     setSelectedMethod={setSelectedMethod}
                     selectedMaterial={selectedMaterial}
                     setSelectedMaterial={setSelectedMaterial}
+                    setCheckList={setCheckList}
+                    checkList={checkList}
                 />
             ))}
-        </div>
+        </StyledFilterBtn>
     );
 };
+
+const StyledFilterBtn = styled.div`
+    border: 1px solid #939fa5;
+    border-radius: 4px;
+    width: 130px;
+    height: auto;
+    margin-top: 4px;
+`;
 
 export default FilterButton;

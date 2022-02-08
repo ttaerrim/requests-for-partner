@@ -1,11 +1,13 @@
+import Button from 'layout/Button';
 import React, { useState } from 'react';
+import { INGREDIENT, PROCESSING_METHOD } from 'utils/constants/data';
 import { RequestsArray, ISetData } from 'utils/types';
-import Option from './Option';
-import FilterButton from './FilterButton';
 
-const PROCESSING_METHOD = ['밀링', '선반'];
-const INGREDIENT = ['알루미늄', '탄소강', '구리', '합금강', '강철'];
-// const [select, setSelected] = useState(0);
+import downArrow from 'assets/arrow_drop_down.png';
+import refresh from 'assets/refresh.png';
+import { OptionHolderTypes } from 'utils/types';
+import FilterButton from './FilterButton';
+import styled from 'styled-components';
 
 const Filter: React.FC<{
     data: RequestsArray;
@@ -22,96 +24,120 @@ const Filter: React.FC<{
         (string | ConcatArray<string>)[]
     >([]);
 
+    const [methodcheckList, setMethodCheckList] = useState<(null | number)[]>(
+        []
+    );
+    const [materialcheckList, setMaterialCheckList] = useState<
+        (null | number)[]
+    >([]);
+
     const openOptionHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         const checkValue = event.currentTarget.value;
         if (checkValue === 'method') {
             setIsMethodOpen((prev) => !prev);
+            setIsIngreOpen(false);
         }
         if (checkValue === 'ingredient') {
             setIsIngreOpen((prev) => !prev);
+            setIsMethodOpen(false);
         }
     };
 
+    const handleAllUncheck = () => {
+        setSelectedMethod([]);
+        setSelectedMaterial([]);
+        setMaterialCheckList([]);
+        setMethodCheckList([]);
+    };
     return (
         <div>
-            <button value="method" onClick={openOptionHandler}>
-                가공방식
-            </button>
-            <button value="ingredient" onClick={openOptionHandler}>
-                재료(1)
-            </button>
-
-            {/* {isMethodOpen && (
-                <FilterButton
-                    buttonData={PROCESSING_METHOD}
-                    name="method"
-                    option={PROCESSING_METHOD}
-                    data={data}
-                    setData={setData}
-                    onFiltered={onFiltered}
-                    originData={originData}
-                />
-            )}
-
-            {isIngreOpen && (
-                <FilterButton
-                    buttonData={INGREDIENT}
-                    name="material"
-                    option={INGREDIENT}
-                    data={data}
-                    setData={setData}
-                    onFiltered={onFiltered}
-                    originData={originData}
-                />
-            )} */}
-
-            {isMethodOpen && (
-                <div>
-                    {PROCESSING_METHOD.map((item, index) => {
-                        return (
-                            <Option
-                                name="method"
-                                key={index}
-                                option={item}
-                                data={data}
-                                setData={setData}
-                                onFiltered={onFiltered}
-                                originData={originData}
-                                selectedMethod={selectedMethod}
-                                setSelectedMethod={setSelectedMethod}
-                                selectedMaterial={selectedMaterial}
-                                setSelectedMaterial={setSelectedMaterial}
-                            />
-                        );
-                    })}
-                </div>
-            )}
-
-            {isIngreOpen && (
-                <div>
-                    {INGREDIENT.map((item, index) => (
-                        <Option
-                            name="material"
-                            key={index}
-                            option={item}
-                            data={data}
-                            setData={setData}
-                            onFiltered={onFiltered}
-                            originData={originData}
-                            selectedMethod={selectedMethod}
-                            setSelectedMethod={setSelectedMethod}
-                            selectedMaterial={selectedMaterial}
-                            setSelectedMaterial={setSelectedMaterial}
-                        />
-                    ))}
-                </div>
-            )}
-
             <div>
-                <button>필터링 리셋</button>
+                <Button value="method" onClick={openOptionHandler}>
+                    가공방식
+                    {selectedMethod.length > 0 && (
+                        <span> ({selectedMethod.length})</span>
+                    )}
+                    <ArrowIMG src={downArrow} alt="drop-down" />
+                </Button>
+                <Button value="ingredient" onClick={openOptionHandler}>
+                    재료
+                    {selectedMaterial.length > 0 && (
+                        <span> ({selectedMaterial.length})</span>
+                    )}
+                    <ArrowIMG src={downArrow} alt="drop-down" />
+                </Button>
+                <RefreshBtn onClick={handleAllUncheck}>
+                    <RefreshIMG src={refresh} alt="refresh" />
+                    <span>필터링 리셋</span>
+                </RefreshBtn>
             </div>
+
+            <OptionHolder>
+                {isMethodOpen && (
+                    <FilterButton
+                        buttonData={PROCESSING_METHOD}
+                        name="method"
+                        option={PROCESSING_METHOD}
+                        data={data}
+                        setData={setData}
+                        onFiltered={onFiltered}
+                        originData={originData}
+                        selectedMethod={selectedMethod}
+                        setSelectedMethod={setSelectedMethod}
+                        selectedMaterial={selectedMaterial}
+                        setSelectedMaterial={setSelectedMaterial}
+                        setCheckList={setMethodCheckList}
+                        checkList={methodcheckList}
+                    />
+                )}
+            </OptionHolder>
+            <OptionHolder name="meterial">
+                {isIngreOpen && (
+                    <FilterButton
+                        selectedMethod={selectedMethod}
+                        setSelectedMethod={setSelectedMethod}
+                        selectedMaterial={selectedMaterial}
+                        setSelectedMaterial={setSelectedMaterial}
+                        buttonData={INGREDIENT}
+                        name="material"
+                        option={INGREDIENT}
+                        data={data}
+                        setData={setData}
+                        onFiltered={onFiltered}
+                        originData={originData}
+                        setCheckList={setMaterialCheckList}
+                        checkList={materialcheckList}
+                    />
+                )}
+            </OptionHolder>
         </div>
     );
 };
+
+const OptionHolder = styled.div<OptionHolderTypes>`
+    position: absolute;
+    z-index: 100;
+    background: #fff;
+    left: ${(props) => props.name === 'meterial' && '208px'};
+`;
+const ArrowIMG = styled.img`
+    width: 10px;
+    height: 5px;
+    margin-bottom: 3px;
+    margin-left: 12px;
+`;
+
+const RefreshBtn = styled.button`
+    font-size: 12px;
+    font-weight: 400px;
+    color: #2196f3;
+    margin-left: 16px;
+`;
+
+const RefreshIMG = styled.img`
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+`;
 
 export default Filter;

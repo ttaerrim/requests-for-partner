@@ -1,12 +1,16 @@
 import React from 'react';
 import { IRequests } from 'utils/types';
 import styled from 'styled-components';
+import Button from 'layout/Button';
 
 const Card: React.FC<{ item: IRequests }> = ({ item }) => {
     return (
         <StyledCard>
             <div>
-                <Title>{item.title}</Title>
+                <Title>
+                    <span>{item.title}</span>
+                    {item.status === '상담중' && <OnConsult>상담중</OnConsult>}
+                </Title>
                 <SubTitle>{item.client}</SubTitle>
                 <Period>{item.due}까지 납기</Period>
                 <Hr />
@@ -22,30 +26,32 @@ const Card: React.FC<{ item: IRequests }> = ({ item }) => {
                         </tr>
                         <tr>
                             <Normal>가공방식</Normal>
-                            <Bold>{item.method}</Bold>
+                            <Bold>{item.method.join(', ')}</Bold>
                         </tr>
                         <tr>
                             <Normal>재료</Normal>
-                            <Bold>{item.material}</Bold>
+                            <Bold>{item.material.join(', ')}</Bold>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div>
-                <button>요청 내역 보기</button>
-                <button>채팅하기</button>
-            </div>
+            <ButtonHolder>
+                <Button theme="blue">요청 내역 보기</Button>
+                <Button theme="white">채팅하기</Button>
+            </ButtonHolder>
         </StyledCard>
     );
 };
 
 const StyledCard = styled.div`
+    position: relative;
+    z-index: 1;
     width: 350px;
-    height: 350px;
+    height: auto;
     border: 1px solid #e5e5e5;
     border-radius: 4px;
     padding: 24px 16px;
-
+    margin: 8px;
     &:hover {
         border: 2px solid #2196f3;
     }
@@ -55,6 +61,17 @@ const Title = styled.div`
     font-weight: 700;
     font-size: 16px;
     color: #323d45;
+    display: flex;
+    justify-content: space-between;
+`;
+
+const OnConsult = styled.span`
+    border: 1px solid #ffa000;
+    border-radius: 12px;
+    color: #ffa000;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 8px;
 `;
 
 const SubTitle = styled.div`
@@ -87,6 +104,10 @@ const Normal = styled.td`
 const Bold = styled.td`
     font-weight: 700;
     font-size: 14px;
+`;
+
+const ButtonHolder = styled.div`
+    margin-top: 40px;
 `;
 
 export default Card;
