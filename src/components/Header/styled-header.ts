@@ -130,7 +130,6 @@ export const RightBox = styled.div`
         margin-right: 8px;
     }
     & > span {
-        /* word-wrap: nowrap; */
         font-size: 14px;
         font-weight: 500;
     }

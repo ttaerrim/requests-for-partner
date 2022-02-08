@@ -36,6 +36,7 @@ export const StyledCard = styled.div`
     margin-left: 0px;
     &:hover {
         border: 2px solid #2196f3;
+        cursor: pointer;
     }
     @media screen and (max-width: 592px) {
         width: 100%;
@@ -73,7 +74,7 @@ export const Period = styled.div`
     margin-bottom: 16px;
 `;
 export const Hr = styled.hr`
-    outline: 0.2px solid #e5e5e5;
+    outline: 0.3px solid #e5e5e5;
     border: 0;
     height: 0px;
     padding: 0;

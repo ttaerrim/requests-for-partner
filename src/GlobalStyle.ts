@@ -47,6 +47,7 @@ button {
   line-height: inherit;
   font-size: inherit;
 }
+
 /* Default CSS */
 body {
   font-family: 'Noto Sans KR', sans-serif;
