@@ -1,15 +1,10 @@
 <h1 align="center"> 요청서 관리 과제 </h1>
 
-<<<<<<< HEAD
 <h3 align="center"> 서비스 링크: https://limitless-fjord-71130.herokuapp.com/</h3>
-=======
-<h3 align="center"> 서비스 링크 : <a href='https://limitless-fjord-71130.herokuapp.com/'>바로가기</a></h3>
->>>>>>> 4964237e69feb76cf2d15a150d9848909c09218f
 
 <p align="center"><img width="800" src="https://user-images.githubusercontent.com/43867711/152996199-0eb414c4-0f97-4d30-9578-e6f024cfb325.png" /></p>
 
 ## 👨‍👨‍👦‍👦 팀원
-
 
 |  이름  |                       Github                        | 담당 기능                                                    |
 | :----: | :-------------------------------------------------: | :----------------------------------------------------------- |
@@ -18,11 +13,7 @@
 | 이태림 |       [ttaerrim](https://github.com/ttaerrim)       | 필터링 기능 구현                                             |
 | 임수영 |     [penguin311](https://github.com/penguin311)     | CRA 초기 세팅, 토글 기능 구현                                |
 
-
-
-
 ## ⚙ 설치
-
 
 ```
 # clone the project
@@ -49,7 +40,6 @@ $ npm run start
 
 ## 🔗 의존성
 
-
 ```
   "dependencies": {
         "@types/jest": "^27.4.0",
@@ -69,10 +59,7 @@ $ npm run start
     },
 ```
 
-
-
 ## 📂 파일 구조
-
 
     ├── public
     ├── server
@@ -98,7 +85,6 @@ $ npm run start
 > 또는 vscode File-tree-generator extension 사용
 
 ## ✅ 구현 사항
-
 
 -   [x] typescript 구현
 -   [x] 헤더
@@ -129,8 +115,7 @@ $ npm run start
         -   [x] 메뉴 화면이 왼쪽에서 들어옴
     -   [x] 백그라운드 영역 탭하면 메뉴 close
 
-## 🧐 한 눈에 보는 기능 
-
+## 🧐 한 눈에 보는 기능
 
 1. 필터링 기능 - 체크박스
 
@@ -143,4 +128,3 @@ $ npm run start
 3. 반응형 앱 - 모바일 사이즈
 
 <p><img src="https://user-images.githubusercontent.com/93258739/153045828-b8dc7fdc-593d-4bb3-b8ae-e531999bed16.gif" width="600px" height="400px" /></p>
-
