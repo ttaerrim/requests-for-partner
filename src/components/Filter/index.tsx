@@ -62,7 +62,6 @@ const Filter: React.FC<{
         setMaterialCheckList([]);
         setMethodCheckList([]);
     };
-    console.log(isMethodOpen);
     return (
         <ButtonsHolder>
             <div>
