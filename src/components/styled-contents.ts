@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
     align-content: center;
     flex-direction: column;
     @media screen and (max-width: 592px) {
-        position: fixed;
         padding: 0 20px;
     } ;
 `;
@@ -28,7 +27,7 @@ export const Filtering = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    @media screen and (max-width: 1399px) {
+    @media screen and (max-width: 1431px) {
         flex-direction: column;
     }
 `;

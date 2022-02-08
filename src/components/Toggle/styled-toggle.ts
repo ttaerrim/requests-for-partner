@@ -10,7 +10,7 @@ export const ToggleDiv = styled.div`
     justify-content: flex-end;
     margin-right: 1rem;
 
-    @media screen and (max-width: 592px) {
+    @media screen and (max-width: 1431px) {
         margin-top: 20px;
         justify-content: flex-start;
     }

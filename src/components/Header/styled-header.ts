@@ -14,7 +14,6 @@ export const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    /* min-width: 592px; */
     height: 70px;
     background-color: ${theme.headerBgColor};
     align-items: center;
@@ -62,7 +61,6 @@ export const ScreenBox = styled.div<{ isOpen: boolean }>`
     left: 0;
     height: 100%;
     width: ${({ isOpen }) => (isOpen ? '100%' : '0')};
-    /* min-width: ${({ isOpen }) => (isOpen ? '590px' : '0')}; */
     transition: 0.5s;
     @media screen and (${theme.notMobile}) {
         display: none;
