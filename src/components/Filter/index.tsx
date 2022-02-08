@@ -1,5 +1,6 @@
-import Button from 'layout/Button';
-import React, { useState, useCallback } from 'react';
+import { useState } from 'react';
+import FilterButton from './FilterButton';
+
 import {
     INGREDIENT,
     PROCESSING_METHOD,
@@ -7,11 +8,16 @@ import {
     MATERIAL,
 } from 'utils/constants/data';
 import { RequestsArray, ISetData } from 'utils/types';
-
 import { downArrow, downArrowWhite, refresh } from 'assets';
-import { OptionHolderTypes } from 'utils/types';
-import FilterButton from './FilterButton';
-import styled from 'styled-components';
+
+import {
+    ArrowIMG,
+    ButtonsHolder,
+    OptionHolder,
+    RefreshBtn,
+    RefreshIMG,
+} from './styled-filter';
+import Button from 'layout/Button';
 
 const Filter: React.FC<{
     data: RequestsArray;
@@ -62,7 +68,7 @@ const Filter: React.FC<{
         setMaterialCheckList([]);
         setMethodCheckList([]);
     };
-    console.log(isMethodOpen);
+
     return (
         <ButtonsHolder>
             <div>
@@ -144,38 +150,5 @@ const Filter: React.FC<{
         </ButtonsHolder>
     );
 };
-
-const ButtonsHolder = styled.div`
-    display: flex;
-`;
-const OptionHolder = styled.div<OptionHolderTypes>`
-    position: absolute;
-    z-index: 100;
-    background: #fff;
-    left: ${(props) => props.name === 'meterial' && '263px'};
-`;
-
-const ArrowIMG = styled.img`
-    width: 10px;
-    height: 5px;
-    margin-bottom: 3px;
-    margin-left: 12px;
-`;
-
-const RefreshBtn = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 400px;
-    color: #2196f3;
-    margin-left: 16px;
-    font-size: 12px;
-`;
-
-const RefreshIMG = styled.img`
-    width: 16px;
-    height: 16px;
-    margin-right: 12px;
-`;
 
 export default Filter;
