@@ -7,6 +7,9 @@ export const CardHolder = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    @media screen and (max-width: 592px) {
+        justify-content: center;
+    }
 `;
 
 export const NoRequestDiv = styled.div`
@@ -33,6 +36,9 @@ export const StyledCard = styled.div`
     margin-left: 0px;
     &:hover {
         border: 2px solid #2196f3;
+    }
+    @media screen and (max-width: 592px) {
+        width: 100%;
     }
 `;
 
