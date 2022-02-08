@@ -26,3 +26,7 @@ export type ISetSelected = React.Dispatch<React.SetStateAction<string | null>>;
 export type ISetSelectedArray = React.Dispatch<
     React.SetStateAction<(string | ConcatArray<string>)[]>
 >;
+
+export interface ButtonProps {
+    theme: string;
+}

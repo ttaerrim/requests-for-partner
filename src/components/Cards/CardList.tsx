@@ -16,6 +16,7 @@ const CardList: React.FC<{ data: RequestsArray }> = ({ data }) => {
 const CardHolder = styled.div`
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
 `;
 
 export default CardList;
