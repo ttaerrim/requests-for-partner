@@ -78,8 +78,9 @@ export const BackScreen = styled.div<{ isOpen: boolean }>`
 `;
 
 export const FrontScreen = styled.div<{ isOpen: boolean }>`
-    position: absolute;
+    position: fixed;
     height: 100%;
+    min-height: 100%;
     background: #ffffff;
     z-index: 2;
     width: ${({ isOpen }) => (isOpen ? '78%' : '0')};

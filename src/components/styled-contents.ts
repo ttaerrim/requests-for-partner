@@ -8,21 +8,16 @@ export const Wrapper = styled.div`
     margin: auto;
     align-content: center;
     flex-direction: column;
-    @media screen and (max-width: 592px) and (min-width: 381px) {
-        padding: 0 40px;
-    }
-    @media screen and (max-width: 380px) {
+    @media screen and (max-width: 592px) {
+        position: fixed;
         padding: 0 20px;
-    }
+    } ;
 `;
 
 export const CardsWrapper = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-around;
-    @media screen and (max-width: 380px) {
-        padding: 0 20px;
-    }
 `;
 
 export const TopUtils = styled.div`
