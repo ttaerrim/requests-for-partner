@@ -69,13 +69,13 @@ const Filter: React.FC<{
                 <Button
                     value="method"
                     onClick={openOptionHandler}
-                    theme={isMethodOpen && 'deepblue'}
+                    theme={selectedMethod.length > 0 && 'deepblue'}
                 >
                     가공방식
                     {selectedMethod.length > 0 && (
                         <span> ({selectedMethod.length})</span>
                     )}
-                    {isMethodOpen ? (
+                    {selectedMethod.length > 0 ? (
                         <ArrowIMG src={downArrowWhite} alt="drop-down" />
                     ) : (
                         <ArrowIMG src={downArrow} alt="drop-down" />
@@ -102,14 +102,14 @@ const Filter: React.FC<{
             <div>
                 <Button
                     value="material"
-                    theme={isIngreOpen && 'deepblue'}
+                    theme={selectedMaterial.length > 0 && 'deepblue'}
                     onClick={openOptionHandler}
                 >
                     재료
                     {selectedMaterial.length > 0 && (
                         <span> ({selectedMaterial.length})</span>
                     )}
-                    {isIngreOpen ? (
+                    {selectedMaterial.length > 0 ? (
                         <ArrowIMG src={downArrowWhite} alt="drop-down" />
                     ) : (
                         <ArrowIMG src={downArrow} alt="drop-down" />
