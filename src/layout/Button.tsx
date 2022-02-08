@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { ButtonProps, ButtonTypes } from 'utils/types';
 
-const Button = ({ onClick, children, type, value }: ButtonTypes) => {
+const Button = ({ onClick, children, value, theme }: ButtonTypes) => {
     return (
-        <StyledButton theme={type} onClick={onClick} value={value}>
+        <StyledButton theme={theme} onClick={onClick} value={value}>
             {children}
         </StyledButton>
     );
@@ -18,9 +18,9 @@ const StyledButton = styled.button<ButtonProps>`
     font-size: 14px;
     border: ${(props) =>
         props.theme === 'white' ? '1px solid #2196F3' : '1px solid #939FA5'};
-    color: ${(props) => (props.theme === 'blue' ? '#fff' : '#2196F3')} || ${(
-    props
-) => props.theme === 'filter' && '#323D45'}
+    color: ${(props) => props.theme === 'blue' && '#fff'}
+        ${(props) => props.theme === 'white' && '#2196F3'};
+    ${(props) => props.theme === 'filter' && '#323D45'};
     background: ${(props) => props.theme === 'blue' && '#2196F3'};
 `;
 

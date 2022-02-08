@@ -36,14 +36,16 @@ const Card: React.FC<{ item: IRequests }> = ({ item }) => {
                 </table>
             </div>
             <ButtonHolder>
-                <Button type="blue">요청 내역 보기</Button>
-                <Button type="white">채팅하기</Button>
+                <Button theme="blue">요청 내역 보기</Button>
+                <Button theme="white">채팅하기</Button>
             </ButtonHolder>
         </StyledCard>
     );
 };
 
 const StyledCard = styled.div`
+    position: relative;
+    z-index: 1;
     width: 350px;
     height: auto;
     border: 1px solid #e5e5e5;
