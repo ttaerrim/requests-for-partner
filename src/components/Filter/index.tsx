@@ -1,11 +1,12 @@
+import Button from 'layout/Button';
 import React, { useState } from 'react';
+import { INGREDIENT, PROCESSING_METHOD } from 'utils/constants/data';
 import { RequestsArray, ISetData } from 'utils/types';
-import Option from './Option';
-import FilterButton from './FilterButton';
 
-const PROCESSING_METHOD = ['밀링', '선반'];
-const INGREDIENT = ['알루미늄', '탄소강', '구리', '합금강', '강철'];
-// const [select, setSelected] = useState(0);
+import downArrow from 'assets/arrow_drop_down.png';
+
+import FilterButton from './FilterButton';
+import styled from 'styled-components';
 
 const Filter: React.FC<{
     data: RequestsArray;
@@ -34,14 +35,16 @@ const Filter: React.FC<{
 
     return (
         <div>
-            <button value="method" onClick={openOptionHandler}>
+            <Button value="method" onClick={openOptionHandler}>
                 가공방식
-            </button>
-            <button value="ingredient" onClick={openOptionHandler}>
+                <ArrowIMG src={downArrow} alt="drop-down" />
+            </Button>
+            <Button value="ingredient" onClick={openOptionHandler}>
                 재료(1)
-            </button>
+                <ArrowIMG src={downArrow} alt="drop-down" />
+            </Button>
 
-            {/* {isMethodOpen && (
+            {isMethodOpen && (
                 <FilterButton
                     buttonData={PROCESSING_METHOD}
                     name="method"
@@ -50,11 +53,19 @@ const Filter: React.FC<{
                     setData={setData}
                     onFiltered={onFiltered}
                     originData={originData}
+                    selectedMethod={selectedMethod}
+                    setSelectedMethod={setSelectedMethod}
+                    selectedMaterial={selectedMaterial}
+                    setSelectedMaterial={setSelectedMaterial}
                 />
             )}
 
             {isIngreOpen && (
                 <FilterButton
+                    selectedMethod={selectedMethod}
+                    setSelectedMethod={setSelectedMethod}
+                    selectedMaterial={selectedMaterial}
+                    setSelectedMaterial={setSelectedMaterial}
                     buttonData={INGREDIENT}
                     name="material"
                     option={INGREDIENT}
@@ -63,48 +74,6 @@ const Filter: React.FC<{
                     onFiltered={onFiltered}
                     originData={originData}
                 />
-            )} */}
-
-            {isMethodOpen && (
-                <div>
-                    {PROCESSING_METHOD.map((item, index) => {
-                        return (
-                            <Option
-                                name="method"
-                                key={index}
-                                option={item}
-                                data={data}
-                                setData={setData}
-                                onFiltered={onFiltered}
-                                originData={originData}
-                                selectedMethod={selectedMethod}
-                                setSelectedMethod={setSelectedMethod}
-                                selectedMaterial={selectedMaterial}
-                                setSelectedMaterial={setSelectedMaterial}
-                            />
-                        );
-                    })}
-                </div>
-            )}
-
-            {isIngreOpen && (
-                <div>
-                    {INGREDIENT.map((item, index) => (
-                        <Option
-                            name="material"
-                            key={index}
-                            option={item}
-                            data={data}
-                            setData={setData}
-                            onFiltered={onFiltered}
-                            originData={originData}
-                            selectedMethod={selectedMethod}
-                            setSelectedMethod={setSelectedMethod}
-                            selectedMaterial={selectedMaterial}
-                            setSelectedMaterial={setSelectedMaterial}
-                        />
-                    ))}
-                </div>
             )}
 
             <div>
@@ -113,5 +82,12 @@ const Filter: React.FC<{
         </div>
     );
 };
+
+const ArrowIMG = styled.img`
+    width: 10px;
+    height: 5px;
+    margin-bottom: 3px;
+    margin-left: 12px;
+`;
 
 export default Filter;

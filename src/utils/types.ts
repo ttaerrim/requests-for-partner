@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface IRequests {
     id: number;
     title: string;
@@ -30,3 +32,10 @@ export type ISetSelectedArray = React.Dispatch<
 export interface ButtonProps {
     theme: string;
 }
+
+export type ButtonTypes = {
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    children?: React.ReactNode;
+    type?: string;
+    value?: string;
+};

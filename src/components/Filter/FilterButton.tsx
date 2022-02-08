@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import {
     RequestsArray,
     ISetData,
@@ -33,7 +34,7 @@ const FilterButton: React.FC<{
     setSelectedMaterial,
 }) => {
     return (
-        <div>
+        <StyledFilterBtn>
             {buttonData.map((item, index) => (
                 <Option
                     key={index}
@@ -49,8 +50,16 @@ const FilterButton: React.FC<{
                     setSelectedMaterial={setSelectedMaterial}
                 />
             ))}
-        </div>
+        </StyledFilterBtn>
     );
 };
+
+const StyledFilterBtn = styled.div`
+    border: 1px solid #939fa5;
+    border-radius: 4px;
+    width: 130px;
+    height: auto;
+    margin-top: 4px;
+`;
 
 export default FilterButton;
