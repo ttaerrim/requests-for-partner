@@ -8,6 +8,7 @@ import {
 } from 'utils/types';
 import { METHOD, MATERIAL } from 'utils/constants/data';
 import { Checkbox } from 'layout/Checkbox';
+import { List } from './styled-filter';
 const Option: React.FC<{
     option: string;
     setData: ISetData;
@@ -114,12 +115,5 @@ const Option: React.FC<{
         </List>
     );
 };
-
-const List = styled.div`
-    display: flex;
-    font-size: 14px;
-    font-weight: 500;
-    margin: 12px 17px;
-`;
 
 export default Option;

@@ -8,7 +8,10 @@ export const Wrapper = styled.div`
     margin: auto;
     align-content: center;
     flex-direction: column;
-    @media screen and (max-width: 592px) {
+    @media screen and (max-width: 592px) and (min-width: 381px) {
+        padding: 0 40px;
+    }
+    @media screen and (max-width: 380px) {
         padding: 0 20px;
     }
 `;

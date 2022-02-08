@@ -4,7 +4,7 @@
 
 <p align="center"><img width="800" src="https://user-images.githubusercontent.com/43867711/152996199-0eb414c4-0f97-4d30-9578-e6f024cfb325.png" /></p>
 
-## 팀원
+## 👨‍👨‍👦‍👦 팀원
 
 |  이름  |                       Github                        | 담당 기능                                                    |
 | :----: | :-------------------------------------------------: | :----------------------------------------------------------- |
@@ -15,7 +15,7 @@
 
 담당 기능은 일단 pull request 보고 적었는데 수정하시면 돼요~~!
 
-## 설치
+## ⚙ 설치
 
 ```
 # clone the project
@@ -37,7 +37,7 @@ $ npm run dev
 ⠀
 ```
 
-## 의존성
+## 🔗 의존성
 
 ```
   "dependencies": {
@@ -60,7 +60,7 @@ $ npm run dev
 
 안 쓰는 패키지 있으면 삭제하고 올리기
 
-## 파일 구조
+## 📂 파일 구조
 
     ├── public
     └── src
@@ -84,7 +84,7 @@ $ npm run dev
 >
 > 또는 vscode File-tree-generator extension 사용
 
-## 구현 사항
+## ✅ 구현 사항
 
 -   [x] typescript 구현
 -   [x] 헤더
@@ -115,7 +115,7 @@ $ npm run dev
         -   [x] 메뉴 화면이 왼쪽에서 들어옴
     -   [x] 백그라운드 영역 탭하면 메뉴 close
 
-## 스크린샷
+## 🗺 스크린샷
 
 <p align="center"><img src="https://im2.ezgif.com/tmp/ezgif-2-0bfd8b1ee4.gif"></p>
 <p align="center"><img src="https://im2.ezgif.com/tmp/ezgif-2-e2b0d60a86.gif"></p>
