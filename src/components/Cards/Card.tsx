@@ -1,6 +1,7 @@
 import React from 'react';
 import { IRequests } from 'utils/types';
 import styled from 'styled-components';
+import Button from 'layout/Button';
 
 const Card: React.FC<{ item: IRequests }> = ({ item }) => {
     return (
@@ -31,21 +32,21 @@ const Card: React.FC<{ item: IRequests }> = ({ item }) => {
                     </tbody>
                 </table>
             </div>
-            <div>
-                <button>요청 내역 보기</button>
-                <button>채팅하기</button>
-            </div>
+            <ButtonHolder>
+                <Button type="blue">요청 내역 보기</Button>
+                <Button type="white">채팅하기</Button>
+            </ButtonHolder>
         </StyledCard>
     );
 };
 
 const StyledCard = styled.div`
     width: 350px;
-    height: 350px;
+    height: auto;
     border: 1px solid #e5e5e5;
     border-radius: 4px;
     padding: 24px 16px;
-
+    margin: 8px;
     &:hover {
         border: 2px solid #2196f3;
     }
@@ -87,6 +88,10 @@ const Normal = styled.td`
 const Bold = styled.td`
     font-weight: 700;
     font-size: 14px;
+`;
+
+const ButtonHolder = styled.div`
+    margin-top: 40px;
 `;
 
 export default Card;

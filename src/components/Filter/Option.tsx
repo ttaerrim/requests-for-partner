@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import {
     RequestsArray,
     ISetData,
@@ -93,16 +94,29 @@ const Option: React.FC<{
         onFilter();
     }, [selectedMaterial, selectedMethod]);
     return (
-        <li>
-            <input
-                type="checkbox"
-                name={name}
-                value={option}
-                onChange={handleClick}
-            />
-            <p>{option}</p>
-        </li>
+        <List>
+            <Span>
+                <input
+                    type="checkbox"
+                    name={name}
+                    value={option}
+                    onChange={handleClick}
+                />
+            </Span>
+            <span>{option}</span>
+        </List>
     );
 };
+
+const List = styled.div`
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 12px 17px;
+`;
+
+const Span = styled.span`
+    margin-right: 10px;
+`;
 
 export default Option;
