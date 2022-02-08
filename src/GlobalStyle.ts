@@ -49,8 +49,8 @@ button {
 }
 /* Default CSS */
 body {
-  font-family: sans-serif;
-  font-size: 18px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
   margin: 0;
   background-color: #fff;
   color: #222;

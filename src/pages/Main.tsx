@@ -4,15 +4,15 @@ import styled from 'styled-components';
 
 const Main = () => {
     return (
-        <>
+        <MainContainer>
             <Header />
             <Contents />
-        </>
+        </MainContainer>
     );
 };
 
 const MainContainer = styled.div`
-    display: flex;
+    widht: 100%;
 `;
 
 export default Main;

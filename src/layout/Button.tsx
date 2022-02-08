@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ButtonProps, ButtonTypes } from 'utils/types';
 
 const Button = ({ onClick, children, value, theme }: ButtonTypes) => {
@@ -16,12 +16,25 @@ const StyledButton = styled.button<ButtonProps>`
     padding: 6px 12px;
     margin-right: 8px;
     font-size: 14px;
-    border: ${(props) =>
-        props.theme === 'white' ? '1px solid #2196F3' : '1px solid #939FA5'};
-    color: ${(props) => props.theme === 'blue' && '#fff'}
-        ${(props) => props.theme === 'white' && '#2196F3'};
-    ${(props) => props.theme === 'filter' && '#323D45'};
-    background: ${(props) => props.theme === 'blue' && '#2196F3'};
+    border: ${({ theme }) =>
+        theme === 'white' || theme === 'blue'
+            ? '1px solid #2196F3'
+            : '1px solid #939FA5'};
+    color: ${({ theme }) => {
+        if (theme === 'blue') return '#fff';
+        else if (theme === 'white') return '#2196F3';
+        else if (theme === 'filter') return '#323D45';
+    }};
+    background: ${({ theme }) => {
+        if (theme === 'blue') return '#2196F3';
+        else if (theme === 'deepblue') return '#1565C0';
+    }};
+    ${({ theme }) => {
+        if (theme === 'deepblue')
+            return css`
+                color: white;
+            `;
+    }}
 `;
 
 export default Button;

@@ -17,6 +17,7 @@ height: 100px;
 opacity: 50%;
 background: #323D45;
 z-index: 1;
+display:none
 `;
 
 const FrontScreen = styled.div`
@@ -27,6 +28,7 @@ const FrontScreen = styled.div`
     box-shadow: 0px 2px 2px 0px #0000003d;
     box-shadow: 0px 0px 2px 0px #0000001f;
     z-index: 2;
+    display: none;
 `;
 
 export default MenuScreen;
