@@ -38,4 +38,9 @@ export type ButtonTypes = {
     children?: React.ReactNode;
     type?: string;
     value?: string;
+    theme?: string;
+};
+
+export type OptionHolderTypes = {
+    name?: string;
 };

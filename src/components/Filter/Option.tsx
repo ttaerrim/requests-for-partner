@@ -122,6 +122,7 @@ const Option: React.FC<{
 };
 
 const List = styled.div`
+    position: relative;
     display: flex;
     font-size: 14px;
     font-weight: 500;

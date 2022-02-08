@@ -7,7 +7,10 @@ const Card: React.FC<{ item: IRequests }> = ({ item }) => {
     return (
         <StyledCard>
             <div>
-                <Title>{item.title}</Title>
+                <Title>
+                    <span>{item.title}</span>
+                    {item.status === '상담중' && <OnConsult>상담중</OnConsult>}
+                </Title>
                 <SubTitle>{item.client}</SubTitle>
                 <Period>{item.due}까지 납기</Period>
                 <Hr />
@@ -33,14 +36,16 @@ const Card: React.FC<{ item: IRequests }> = ({ item }) => {
                 </table>
             </div>
             <ButtonHolder>
-                <Button type="blue">요청 내역 보기</Button>
-                <Button type="white">채팅하기</Button>
+                <Button theme="blue">요청 내역 보기</Button>
+                <Button theme="white">채팅하기</Button>
             </ButtonHolder>
         </StyledCard>
     );
 };
 
 const StyledCard = styled.div`
+    position: relative;
+    z-index: 1;
     width: 350px;
     height: auto;
     border: 1px solid #e5e5e5;
@@ -56,6 +61,17 @@ const Title = styled.div`
     font-weight: 700;
     font-size: 16px;
     color: #323d45;
+    display: flex;
+    justify-content: space-between;
+`;
+
+const OnConsult = styled.span`
+    border: 1px solid #ffa000;
+    border-radius: 12px;
+    color: #ffa000;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 8px;
 `;
 
 const SubTitle = styled.div`

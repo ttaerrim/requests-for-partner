@@ -51,6 +51,8 @@ const Contents = () => {
 
 const Wrapper = styled.div`
     display: flex;
+    width: 100%;
+    height: 100%;
     flex-wrap: wrap;
     flex-direction: column;
     align-content: center;

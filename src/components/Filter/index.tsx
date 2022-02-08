@@ -5,7 +5,7 @@ import { RequestsArray, ISetData } from 'utils/types';
 
 import downArrow from 'assets/arrow_drop_down.png';
 import refresh from 'assets/refresh.png';
-
+import { OptionHolderTypes } from 'utils/types';
 import FilterButton from './FilterButton';
 import styled from 'styled-components';
 
@@ -35,9 +35,11 @@ const Filter: React.FC<{
         const checkValue = event.currentTarget.value;
         if (checkValue === 'method') {
             setIsMethodOpen((prev) => !prev);
+            setIsIngreOpen(false);
         }
         if (checkValue === 'ingredient') {
             setIsIngreOpen((prev) => !prev);
+            setIsMethodOpen(false);
         }
     };
 
@@ -49,66 +51,75 @@ const Filter: React.FC<{
     };
     return (
         <div>
-            <Button value="method" onClick={openOptionHandler}>
-                가공방식
-                {selectedMethod.length > 0 && (
-                    <span> ({selectedMethod.length})</span>
-                )}
-                <ArrowIMG src={downArrow} alt="drop-down" />
-            </Button>
-            <Button value="ingredient" onClick={openOptionHandler}>
-                재료
-                {selectedMaterial.length > 0 && (
-                    <span> ({selectedMaterial.length})</span>
-                )}
-                <ArrowIMG src={downArrow} alt="drop-down" />
-            </Button>
-
-            {isMethodOpen && (
-                <FilterButton
-                    buttonData={PROCESSING_METHOD}
-                    name="method"
-                    option={PROCESSING_METHOD}
-                    data={data}
-                    setData={setData}
-                    onFiltered={onFiltered}
-                    originData={originData}
-                    selectedMethod={selectedMethod}
-                    setSelectedMethod={setSelectedMethod}
-                    selectedMaterial={selectedMaterial}
-                    setSelectedMaterial={setSelectedMaterial}
-                    setCheckList={setMethodCheckList}
-                    checkList={methodcheckList}
-                />
-            )}
-
-            {isIngreOpen && (
-                <FilterButton
-                    selectedMethod={selectedMethod}
-                    setSelectedMethod={setSelectedMethod}
-                    selectedMaterial={selectedMaterial}
-                    setSelectedMaterial={setSelectedMaterial}
-                    buttonData={INGREDIENT}
-                    name="material"
-                    option={INGREDIENT}
-                    data={data}
-                    setData={setData}
-                    onFiltered={onFiltered}
-                    originData={originData}
-                    setCheckList={setMaterialCheckList}
-                    checkList={materialcheckList}
-                />
-            )}
-
-            <span>
+            <div>
+                <Button value="method" onClick={openOptionHandler}>
+                    가공방식
+                    {selectedMethod.length > 0 && (
+                        <span> ({selectedMethod.length})</span>
+                    )}
+                    <ArrowIMG src={downArrow} alt="drop-down" />
+                </Button>
+                <Button value="ingredient" onClick={openOptionHandler}>
+                    재료
+                    {selectedMaterial.length > 0 && (
+                        <span> ({selectedMaterial.length})</span>
+                    )}
+                    <ArrowIMG src={downArrow} alt="drop-down" />
+                </Button>
                 <RefreshBtn onClick={handleAllUncheck}>
-                    <RefreshIMG src={refresh} alt="refresh" /> 필터링 리셋
+                    <RefreshIMG src={refresh} alt="refresh" />
+                    <span>필터링 리셋</span>
                 </RefreshBtn>
-            </span>
+            </div>
+
+            <OptionHolder>
+                {isMethodOpen && (
+                    <FilterButton
+                        buttonData={PROCESSING_METHOD}
+                        name="method"
+                        option={PROCESSING_METHOD}
+                        data={data}
+                        setData={setData}
+                        onFiltered={onFiltered}
+                        originData={originData}
+                        selectedMethod={selectedMethod}
+                        setSelectedMethod={setSelectedMethod}
+                        selectedMaterial={selectedMaterial}
+                        setSelectedMaterial={setSelectedMaterial}
+                        setCheckList={setMethodCheckList}
+                        checkList={methodcheckList}
+                    />
+                )}
+            </OptionHolder>
+            <OptionHolder name="meterial">
+                {isIngreOpen && (
+                    <FilterButton
+                        selectedMethod={selectedMethod}
+                        setSelectedMethod={setSelectedMethod}
+                        selectedMaterial={selectedMaterial}
+                        setSelectedMaterial={setSelectedMaterial}
+                        buttonData={INGREDIENT}
+                        name="material"
+                        option={INGREDIENT}
+                        data={data}
+                        setData={setData}
+                        onFiltered={onFiltered}
+                        originData={originData}
+                        setCheckList={setMaterialCheckList}
+                        checkList={materialcheckList}
+                    />
+                )}
+            </OptionHolder>
         </div>
     );
 };
 
+const OptionHolder = styled.div<OptionHolderTypes>`
+    position: absolute;
+    z-index: 100;
+    background: #fff;
+    left: ${(props) => props.name === 'meterial' && '208px'};
+`;
 const ArrowIMG = styled.img`
     width: 10px;
     height: 5px;
@@ -116,14 +127,17 @@ const ArrowIMG = styled.img`
     margin-left: 12px;
 `;
 
-const RefreshIMG = styled.img`
-    width: 16px;
-    height: 16px;
-`;
-
 const RefreshBtn = styled.button`
     font-size: 12px;
     font-weight: 400px;
     color: #2196f3;
+    margin-left: 16px;
 `;
+
+const RefreshIMG = styled.img`
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+`;
+
 export default Filter;
