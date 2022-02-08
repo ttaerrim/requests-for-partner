@@ -1,14 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { logoIcon, logoIconColor, hamburger } from 'assets';
+import { logoIcon, hamburger } from 'assets';
 
 const LeftSide: React.FC<{
-    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ setIsOpen }) => {
-    const menuOpen = () => {
-        setIsOpen((state) => !state);
-    };
-
+    menuOpen: () => void;
+}> = ({ menuOpen }) => {
     return (
         <LeftBox>
             <img src={hamburger} onClick={menuOpen} />
