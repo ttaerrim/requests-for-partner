@@ -1,14 +1,7 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import {
-    RequestsArray,
-    ISetData,
-    ISetSelected,
-    ISetSelectedArray,
-    IsOpenTypes,
-} from 'utils/types';
-
 import Option from './Option';
+import { RequestsArray, ISetData, ISetSelectedArray } from 'utils/types';
+
+import { StyledFilterBtn } from './styled-filter';
 
 const FilterButton: React.FC<{
     buttonData: string[];
@@ -29,7 +22,6 @@ const FilterButton: React.FC<{
     data,
     setData,
     originData,
-    option,
     name,
     selectedMethod,
     setSelectedMethod,
@@ -39,14 +31,6 @@ const FilterButton: React.FC<{
     setCheckList,
     isOpen,
 }) => {
-    // console.log(
-    //     'selectedMaterial: ',
-    //     selectedMaterial,
-    //     'selectedMethod: ',
-    //     selectedMethod,
-    //     'checkList: ',
-    //     checkList
-    // );
     return (
         <StyledFilterBtn isOpen={isOpen}>
             {buttonData.map((item, index) => (
@@ -69,21 +53,5 @@ const FilterButton: React.FC<{
         </StyledFilterBtn>
     );
 };
-
-const StyledFilterBtn = styled.div<IsOpenTypes>`
-    border: 1px solid #939fa5;
-    border-radius: 4px;
-    width: 130px;
-    height: auto;
-    margin-top: 4px;
-    position: relative;
-    ${({ isOpen }) => {
-        if (!isOpen) {
-            return css`
-                display: none;
-            `;
-        }
-    }}
-`;
 
 export default FilterButton;

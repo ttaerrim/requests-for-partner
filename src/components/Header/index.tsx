@@ -1,15 +1,16 @@
-import styled from 'styled-components';
+import { useState } from 'react';
+
 import LeftSide from './LeftSide';
 import RightSide from './RightSide';
 import MenuScreen from './MenuScreen';
-import { useState } from 'react';
+
+import { HeaderContainer } from './styled-header';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const menuOpen = () => {
         setIsOpen((state) => !state);
     };
-    console.log(isOpen);
 
     return (
         <>
@@ -21,19 +22,5 @@ const Header = () => {
         </>
     );
 };
-const HeaderContainer = styled.div`
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    min-width: 360px;
-    height: 70px;
-    background-color: #1565c0;
-    align-items: center;
-
-    @media screen and (max-width: 380px) {
-        height: 44px;
-        justify-content: space-between;
-    }
-`;
 
 export default Header;

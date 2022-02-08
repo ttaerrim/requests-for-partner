@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import {
     RequestsArray,
     ISetData,
     ISetSelectedArray,
     IRequests,
-    ISetSelected,
 } from 'utils/types';
 import { METHOD, MATERIAL } from 'utils/constants/data';
-
+import Checkbox from 'layout/Checkbox';
 const Option: React.FC<{
     option: string;
     setData: ISetData;
@@ -42,7 +41,6 @@ const Option: React.FC<{
             setSelected(target);
             console.log(target.checked);
             setCheckList([...checkList, parseInt(target.id)]);
-            // console.log(target);
         } else {
             setSelectedInit(target);
             setCheckList(checkList.filter((id) => id !== parseInt(target.id)));
@@ -100,20 +98,22 @@ const Option: React.FC<{
         };
 
         onFilter();
-        console.log(
-            'selectedMaterial: ',
-            selectedMaterial,
-            'selectedMethod: ',
-            selectedMethod,
-            'checkList: ',
-            checkList
-        );
     }, [selectedMaterial, selectedMethod, checkList, originData]);
 
     return (
         <List>
             <Span>
-                <input
+                <StyledInput
+                    type="checkbox"
+                    name={name}
+                    id={id.toString()}
+                    value={option}
+                    onChange={handleClick}
+                    checked={
+                        checkList ? (checkList as number[]).includes(id) : false
+                    }
+                />
+                <Checkbox
                     type="checkbox"
                     name={name}
                     id={id.toString()}
@@ -140,4 +140,9 @@ const Span = styled.span`
     margin-right: 10px;
 `;
 
+const StyledInput = styled.input`
+    width: 18px;
+    height: 18px;
+    border: none;
+`;
 export default Option;
