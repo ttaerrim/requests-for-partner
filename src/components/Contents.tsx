@@ -54,7 +54,7 @@ const Contents = () => {
                     <Toggle isToggled={isToggled} setIsToggled={setIsToggled} />
                 </Filtering>
             </TopUtils>
-
+            
             <CardsWrapper>
                 <Cards data={filteredData} />
             </CardsWrapper>
