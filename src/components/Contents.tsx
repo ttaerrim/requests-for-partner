@@ -34,13 +34,16 @@ const Contents = () => {
 
     return (
         <Wrapper>
-            <Filter
-                data={data}
-                setData={setData}
-                onFiltered={onFiltered}
-                originData={originData}
-            />
-            <Toggle isToggled={isToggled} setIsToggled={setIsToggled} />
+            <TopUtils>
+                <Filter
+                    data={data}
+                    setData={setData}
+                    onFiltered={onFiltered}
+                    originData={originData}
+                />
+                <Toggle isToggled={isToggled} setIsToggled={setIsToggled} />
+            </TopUtils>
+
             <Cards data={filteredData} />
         </Wrapper>
     );
@@ -52,6 +55,10 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-content: center;
     padding: 10px 100px;
+`;
+
+const TopUtils = styled.div`
+    display: flex;
 `;
 
 export default Contents;

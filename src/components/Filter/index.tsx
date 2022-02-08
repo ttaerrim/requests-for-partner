@@ -4,6 +4,7 @@ import { INGREDIENT, PROCESSING_METHOD } from 'utils/constants/data';
 import { RequestsArray, ISetData } from 'utils/types';
 
 import downArrow from 'assets/arrow_drop_down.png';
+import refresh from 'assets/refresh.png';
 
 import FilterButton from './FilterButton';
 import styled from 'styled-components';
@@ -76,9 +77,11 @@ const Filter: React.FC<{
                 />
             )}
 
-            <div>
-                <button>필터링 리셋</button>
-            </div>
+            <span>
+                <RefreshBtn>
+                    <RefreshIMG src={refresh} alt="refresh" /> 필터링 리셋
+                </RefreshBtn>
+            </span>
         </div>
     );
 };
@@ -90,4 +93,14 @@ const ArrowIMG = styled.img`
     margin-left: 12px;
 `;
 
+const RefreshIMG = styled.img`
+    width: 16px;
+    height: 16px;
+`;
+
+const RefreshBtn = styled.button`
+    font-size: 12px;
+    font-weight: 400px;
+    color: #2196f3;
+`;
 export default Filter;
