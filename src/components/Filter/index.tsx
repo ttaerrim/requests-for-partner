@@ -5,7 +5,6 @@ import { RequestsArray, ISetData } from 'utils/types';
 
 import downArrow from 'assets/arrow_drop_down.png';
 import refresh from 'assets/refresh.png';
-
 import { OptionHolderTypes } from 'utils/types';
 import FilterButton from './FilterButton';
 import styled from 'styled-components';
@@ -25,6 +24,13 @@ const Filter: React.FC<{
         (string | ConcatArray<string>)[]
     >([]);
 
+    const [methodcheckList, setMethodCheckList] = useState<(null | number)[]>(
+        []
+    );
+    const [materialcheckList, setMaterialCheckList] = useState<
+        (null | number)[]
+    >([]);
+
     const openOptionHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         const checkValue = event.currentTarget.value;
         if (checkValue === 'method') {
@@ -37,18 +43,30 @@ const Filter: React.FC<{
         }
     };
 
+    const handleAllUncheck = () => {
+        setSelectedMethod([]);
+        setSelectedMaterial([]);
+        setMaterialCheckList([]);
+        setMethodCheckList([]);
+    };
     return (
         <div>
             <div>
                 <Button value="method" onClick={openOptionHandler}>
                     가공방식
+                    {selectedMethod.length > 0 && (
+                        <span> ({selectedMethod.length})</span>
+                    )}
                     <ArrowIMG src={downArrow} alt="drop-down" />
                 </Button>
                 <Button value="ingredient" onClick={openOptionHandler}>
-                    재료(1)
+                    재료
+                    {selectedMaterial.length > 0 && (
+                        <span> ({selectedMaterial.length})</span>
+                    )}
                     <ArrowIMG src={downArrow} alt="drop-down" />
                 </Button>
-                <RefreshBtn>
+                <RefreshBtn onClick={handleAllUncheck}>
                     <RefreshIMG src={refresh} alt="refresh" />
                     <span>필터링 리셋</span>
                 </RefreshBtn>
@@ -68,6 +86,8 @@ const Filter: React.FC<{
                         setSelectedMethod={setSelectedMethod}
                         selectedMaterial={selectedMaterial}
                         setSelectedMaterial={setSelectedMaterial}
+                        setCheckList={setMethodCheckList}
+                        checkList={methodcheckList}
                     />
                 )}
             </OptionHolder>
@@ -85,6 +105,8 @@ const Filter: React.FC<{
                         setData={setData}
                         onFiltered={onFiltered}
                         originData={originData}
+                        setCheckList={setMaterialCheckList}
+                        checkList={materialcheckList}
                     />
                 )}
             </OptionHolder>

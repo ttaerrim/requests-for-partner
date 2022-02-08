@@ -17,26 +17,37 @@ const Option: React.FC<{
     originData: RequestsArray;
     onFiltered(selectedValue: string): void;
     name: string;
+    id: number;
     selectedMethod: (string | ConcatArray<string>)[];
     setSelectedMethod: ISetSelectedArray;
     selectedMaterial: (string | ConcatArray<string>)[];
     setSelectedMaterial: ISetSelectedArray;
+    checkList: (null | number)[];
+    setCheckList: React.Dispatch<React.SetStateAction<(null | number)[]>>;
 }> = ({
     option,
     setData,
+    data,
+    id,
+    onFiltered,
     originData,
     name,
     selectedMethod,
     setSelectedMethod,
     selectedMaterial,
     setSelectedMaterial,
+    checkList,
+    setCheckList,
 }) => {
     const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
         const target = e.currentTarget;
         if (target.checked) {
             setSelected(target);
+            setCheckList([...checkList, parseInt(target.id)]);
+            // console.log(target);
         } else {
             setSelectedInit(target);
+            setCheckList(checkList.filter((id) => id !== parseInt(target.id)));
         }
     };
 
@@ -97,8 +108,12 @@ const Option: React.FC<{
                 <input
                     type="checkbox"
                     name={name}
+                    id={id.toString()}
                     value={option}
                     onChange={handleClick}
+                    checked={
+                        checkList ? (checkList as number[]).includes(id) : false
+                    }
                 />
             </Span>
             <span>{option}</span>
