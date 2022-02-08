@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
     @media screen and (max-width: 592px) {
         position: fixed;
         padding: 0 20px;
-    }
+    } ;
 `;
 
 export const CardsWrapper = styled.div`
