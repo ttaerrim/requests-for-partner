@@ -39,14 +39,6 @@ const FilterButton: React.FC<{
     setCheckList,
     isOpen,
 }) => {
-    // console.log(
-    //     'selectedMaterial: ',
-    //     selectedMaterial,
-    //     'selectedMethod: ',
-    //     selectedMethod,
-    //     'checkList: ',
-    //     checkList
-    // );
     return (
         <StyledFilterBtn isOpen={isOpen}>
             {buttonData.map((item, index) => (
