@@ -21,7 +21,9 @@ const Contents = () => {
     useEffect(() => {
         const getData = async () => {
             const json = await (
-                await fetch('http://localhost:3001/requests')
+                await fetch(
+                    'https://limitless-fjord-71130.herokuapp.com/requests'
+                )
             ).json();
 
             setData(json);
