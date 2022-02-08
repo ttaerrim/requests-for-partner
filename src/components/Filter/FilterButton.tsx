@@ -22,7 +22,6 @@ const FilterButton: React.FC<{
     data,
     setData,
     originData,
-    option,
     name,
     selectedMethod,
     setSelectedMethod,

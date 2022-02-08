@@ -16,12 +16,14 @@ const Toggle: React.FC<{
 
     const changeHandler = () => {
         const isChecked = checkingRef.current!.checked;
+        console.log(isChecked);
         setIsToggled(isChecked);
     };
 
     return (
         <ToggleDiv>
             <ToggledContainer
+                htmlFor="toggle"
                 style={{ background: `${isToggled ? '#BBDEFB' : '#c2c2c2'}` }}
             >
                 <Label

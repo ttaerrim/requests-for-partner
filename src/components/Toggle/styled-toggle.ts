@@ -16,7 +16,7 @@ export const ToggleDiv = styled.div`
     }
 `;
 
-export const ToggledContainer = styled.div`
+export const ToggledContainer = styled.label`
     display: flex;
     position: relative;
     width: 34px;
