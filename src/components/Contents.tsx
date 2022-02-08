@@ -1,9 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
 import Filter from 'components/Filter';
 import Cards from 'components/Cards';
 import Toggle from 'components/Toggle';
 import { RequestsArray } from 'utils/types';
-import styled from 'styled-components';
+
+import {
+    Banner,
+    CardsWrapper,
+    Filtering,
+    TopUtils,
+    Wrapper,
+} from './styled-contents';
 
 const Contents = () => {
     const [data, setData] = useState<RequestsArray | null>([]);
@@ -53,52 +61,5 @@ const Contents = () => {
         </Wrapper>
     );
 };
-//contents 반응형으로 1400px
-const Wrapper = styled.div`
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    padding: 0 155px;
-    margin: auto;
-    align-content: center;
-    flex-direction: column;
-    @media screen and (max-width: 426px) {
-        padding: 0 20px;
-    }
-`;
-
-const CardsWrapper = styled.div`
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    @media screen and (max-width: 380px) {
-        padding: 0 20px;
-    }
-`;
-
-const TopUtils = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
-const Filtering = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    @media screen and (max-width: 1399px) {
-        flex-direction: column;
-    }
-`;
-const Banner = styled.div`
-    margin: 40px 0 50px 0;
-
-    div:first-child {
-        font-size: 20px;
-        font-weight: 700;
-    }
-    div:last-child {
-        font-size: 16px;
-        font-weight: 400;
-    }
-`;
 
 export default Contents;

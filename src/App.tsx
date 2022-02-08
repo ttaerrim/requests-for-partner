@@ -1,19 +1,15 @@
 import { Fragment } from 'react';
-import GlobalStyle from './GlobalStyle';
 import Main from 'pages/Main';
-import styled from 'styled-components';
+
+import GlobalStyle from './GlobalStyle';
 
 const App = () => {
     return (
         <Fragment>
             <GlobalStyle />
-            <Div>
-                <Main />
-            </Div>
+            <Main />
         </Fragment>
     );
 };
-
-const Div = styled.div``;
 
 export default App;

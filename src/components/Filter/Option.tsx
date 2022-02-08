@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import {
     RequestsArray,
     ISetData,
     ISetSelectedArray,
     IRequests,
-    ISetSelected,
 } from 'utils/types';
 import { METHOD, MATERIAL } from 'utils/constants/data';
 import { Checkbox } from 'layout/Checkbox';
-
 const Option: React.FC<{
     option: string;
     setData: ISetData;
