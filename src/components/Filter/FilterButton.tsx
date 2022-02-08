@@ -67,6 +67,7 @@ const StyledFilterBtn = styled.div`
     width: 130px;
     height: auto;
     margin-top: 4px;
+    position: relative;
 `;
 
 export default FilterButton;

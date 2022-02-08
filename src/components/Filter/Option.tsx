@@ -72,36 +72,38 @@ const Option: React.FC<{
             );
         }
     };
-    const onFilter = () => {
-        if (!selectedMaterial && !selectedMethod) {
-            setData(originData);
-        } else {
-            const newData = originData.reduce<IRequests[]>((acc, curr) => {
-                const selectedMethodCondition =
-                    selectedMethod && selectedMethod.length > 0
-                        ? // ? curr.method.includes(selectedMethod)
-                          selectedMethod.every((i) =>
-                              curr.method.includes(i.toString())
-                          )
-                        : true;
-                const selectedMaterialCondition =
-                    selectedMaterial && selectedMaterial.length > 0
-                        ? selectedMaterial.every((i) =>
-                              curr.material.includes(i.toString())
-                          )
-                        : true;
-                if (selectedMaterialCondition && selectedMethodCondition) {
-                    acc.push(curr);
-                }
-                return acc;
-            }, []);
-            setData(newData);
-        }
-    };
 
     useEffect(() => {
+        const onFilter = () => {
+            if (!selectedMaterial && !selectedMethod) {
+                setData(originData);
+            } else {
+                const newData = originData.reduce<IRequests[]>((acc, curr) => {
+                    const selectedMethodCondition =
+                        selectedMethod && selectedMethod.length > 0
+                            ? // ? curr.method.includes(selectedMethod)
+                              selectedMethod.every((i) =>
+                                  curr.method.includes(i.toString())
+                              )
+                            : true;
+                    const selectedMaterialCondition =
+                        selectedMaterial && selectedMaterial.length > 0
+                            ? selectedMaterial.every((i) =>
+                                  curr.material.includes(i.toString())
+                              )
+                            : true;
+                    if (selectedMaterialCondition && selectedMethodCondition) {
+                        acc.push(curr);
+                    }
+                    return acc;
+                }, []);
+                setData(newData);
+            }
+        };
+
         onFilter();
-    }, [selectedMaterial, selectedMethod]);
+        console.log(selectedMaterial, selectedMethod);
+    }, [selectedMaterial, selectedMethod, checkList]);
     return (
         <List>
             <Span>
@@ -122,7 +124,6 @@ const Option: React.FC<{
 };
 
 const List = styled.div`
-    position: relative;
     display: flex;
     font-size: 14px;
     font-weight: 500;

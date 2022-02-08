@@ -15,38 +15,50 @@ const Toggle: React.FC<{
     };
 
     return (
-        <ToggledContainer>
-            <Label
-                htmlFor="toggle"
-                style={{
-                    transform: `translateX(${isToggled ? '15px' : '0px'})`,
-                }}
-            />
-            <Notch
-                onChange={changeHandler}
-                ref={checkingRef}
-                id="toggle"
-                type="checkbox"
-            />
-            <span className="onoff-switch"></span>
-        </ToggledContainer>
+        <ToggleDiv>
+            <ToggledContainer>
+                <Label
+                    htmlFor="toggle"
+                    style={{
+                        transform: `translateX(${isToggled ? '15px' : '0px'})`,
+                    }}
+                />
+                <Notch
+                    onChange={changeHandler}
+                    ref={checkingRef}
+                    id="toggle"
+                    type="checkbox"
+                />
+            </ToggledContainer>
+
+            <DescText>상담 중인 요청만 보기</DescText>
+        </ToggleDiv>
     );
 };
+const ToggleDiv = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 1rem;
 
+    @media screen and (max-width: 1399px) {
+        margin-top: 20px;
+        justify-content: flex-start;
+    }
+`;
 const ToggledContainer = styled.div`
+    display: flex;
     position: relative;
-    display: inline-block;
     width: 34px;
     height: 14px;
     background: #c2c2c2;
     border-radius: 25px;
-    margin: auto;
-    display: flex;
     input {
         opacity: 0;
         width: 0;
         height: 0;
     }
+    margin-right: 16px;
 `;
 
 const Label = styled.label`
@@ -63,6 +75,10 @@ const Label = styled.label`
 /* transform: translate(${(props) => (props.checked ? '26px' : '1px')}); */
 const Notch = styled.input`
     position: hide;
+`;
+
+const DescText = styled.p`
+    font-size: 14px;
 `;
 
 export default Toggle;
