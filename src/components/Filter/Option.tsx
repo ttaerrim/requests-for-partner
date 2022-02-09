@@ -17,8 +17,6 @@ const Option: React.FC<{
     id: number;
     selected: (string | ConcatArray<string>)[];
     setSelected: ISetSelectedArray;
-    checkList: (null | number)[];
-    setCheckList: React.Dispatch<React.SetStateAction<(null | number)[]>>;
 }> = ({
     option,
     setData,
@@ -28,17 +26,13 @@ const Option: React.FC<{
     name,
     selected,
     setSelected,
-    checkList,
-    setCheckList,
 }) => {
     const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
         const target = e.currentTarget;
         if (target.checked) {
             setSelected(selected.concat(target.value));
-            setCheckList([...checkList, parseInt(target.id)]);
         } else {
             setSelectedInit(target);
-            setCheckList(checkList.filter((id) => id !== parseInt(target.id)));
         }
     };
 
@@ -51,7 +45,6 @@ const Option: React.FC<{
             );
         }
     };
-    console.log(selected, name);
     useEffect(() => {
         const onFilter = () => {
             if (!selected) {
@@ -80,14 +73,14 @@ const Option: React.FC<{
         };
 
         onFilter();
-    }, [selected, checkList, originData]);
+    }, [selected, originData]);
 
     return (
         <List>
             <Checkbox
                 id={id.toString() + option}
                 checked={
-                    checkList ? (checkList as number[]).includes(id) : false
+                    selected ? (selected as string[]).includes(option) : false
                 }
                 onChange={handleClick}
                 label={option}

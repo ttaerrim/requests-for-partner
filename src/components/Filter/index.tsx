@@ -2,8 +2,8 @@ import { useState } from 'react';
 import FilterButton from './FilterButton';
 
 import {
-    INGREDIENT,
-    PROCESSING_METHOD,
+    METHOD_LIST,
+    MATERIAL_LIST,
     METHOD,
     MATERIAL,
 } from 'utils/constants/data';
@@ -25,7 +25,7 @@ const Filter: React.FC<{
     originData: RequestsArray;
 }> = ({ data, setData, originData }) => {
     const [isMethodOpen, setIsMethodOpen] = useState(false);
-    const [isIngreOpen, setIsIngreOpen] = useState(false);
+    const [isMaterialOpen, setIsMaterialOpen] = useState(false);
     const [selectedMethod, setSelectedMethod] = useState<
         (string | ConcatArray<string>)[]
     >([]);
@@ -33,28 +33,21 @@ const Filter: React.FC<{
         (string | ConcatArray<string>)[]
     >([]);
 
-    const [methodCheckList, setMethodCheckList] = useState<(null | number)[]>(
-        []
-    );
-    const [materialCheckList, setMaterialCheckList] = useState<
-        (null | number)[]
-    >([]);
-
     const openOptionHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         const checkValue = event.currentTarget.value;
         if (checkValue === METHOD) {
             setIsMethodOpen((isMethodOpen) => !isMethodOpen);
-            setIsIngreOpen(false);
+            setIsMaterialOpen(false);
         }
         if (checkValue === MATERIAL) {
-            setIsIngreOpen((isIngreOpen) => !isIngreOpen);
+            setIsMaterialOpen((isMaterialOpen) => !isMaterialOpen);
             setIsMethodOpen(false);
         }
     };
 
     const closeOptionHandler = () => {
         setIsMethodOpen(false);
-        setIsIngreOpen(false);
+        setIsMaterialOpen(false);
     };
 
     const handleAllUncheck = () => {
@@ -65,8 +58,6 @@ const Filter: React.FC<{
     const setArraysInit = () => {
         setSelectedMethod([]);
         setSelectedMaterial([]);
-        setMaterialCheckList([]);
-        setMethodCheckList([]);
     };
     return (
         <ButtonsHolder>
@@ -88,17 +79,15 @@ const Filter: React.FC<{
                 </Button>
                 <OptionHolder>
                     <FilterButton
-                        isOpen={isMethodOpen}
-                        buttonData={PROCESSING_METHOD}
                         name="method"
-                        option={PROCESSING_METHOD}
                         data={data}
                         setData={setData}
                         originData={originData}
+                        buttonData={METHOD_LIST}
+                        option={METHOD_LIST}
+                        isOpen={isMethodOpen}
                         selected={selectedMethod}
                         setSelected={setSelectedMethod}
-                        setCheckList={setMethodCheckList}
-                        checkList={methodCheckList}
                     />
                 </OptionHolder>
             </div>
@@ -120,17 +109,15 @@ const Filter: React.FC<{
                 </Button>
                 <OptionHolder>
                     <FilterButton
-                        isOpen={isIngreOpen}
-                        selected={selectedMaterial}
-                        setSelected={setSelectedMaterial}
-                        buttonData={INGREDIENT}
                         name="material"
-                        option={INGREDIENT}
                         data={data}
                         setData={setData}
                         originData={originData}
-                        setCheckList={setMaterialCheckList}
-                        checkList={materialCheckList}
+                        buttonData={MATERIAL_LIST}
+                        option={MATERIAL_LIST}
+                        isOpen={isMaterialOpen}
+                        selected={selectedMaterial}
+                        setSelected={setSelectedMaterial}
                     />
                 </OptionHolder>
             </div>

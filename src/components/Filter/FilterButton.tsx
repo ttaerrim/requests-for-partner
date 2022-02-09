@@ -12,8 +12,6 @@ const FilterButton: React.FC<{
     option: string[];
     selected: (string | ConcatArray<string>)[];
     setSelected: ISetSelectedArray;
-    checkList: (null | number)[];
-    setCheckList: React.Dispatch<React.SetStateAction<(null | number)[]>>;
     isOpen: boolean;
 }> = ({
     buttonData,
@@ -23,8 +21,6 @@ const FilterButton: React.FC<{
     name,
     selected,
     setSelected,
-    checkList,
-    setCheckList,
     isOpen,
 }) => {
     return (
@@ -40,8 +36,6 @@ const FilterButton: React.FC<{
                     originData={originData}
                     selected={selected}
                     setSelected={setSelected}
-                    setCheckList={setCheckList}
-                    checkList={checkList}
                 />
             ))}
         </StyledFilterBtn>

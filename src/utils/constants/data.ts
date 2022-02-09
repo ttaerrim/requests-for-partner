@@ -1,5 +1,5 @@
-export const PROCESSING_METHOD = ['밀링', '선반'];
-export const INGREDIENT = [
+export const METHOD_LIST = ['밀링', '선반'];
+export const MATERIAL_LIST = [
     '알루미늄',
     '탄소강',
     '구리',
