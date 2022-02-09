@@ -27,7 +27,7 @@ $ npm ci
 $ npm run build
 
 # start
-$ npm run start
+$ npm run start:dev
 
 ⠀
 ⠀  You can now view this project in the browser.
