@@ -15,10 +15,8 @@ const Option: React.FC<{
     originData: RequestsArray;
     name: string;
     id: number;
-    selectedMethod: (string | ConcatArray<string>)[];
-    setSelectedMethod: ISetSelectedArray;
-    selectedMaterial: (string | ConcatArray<string>)[];
-    setSelectedMaterial: ISetSelectedArray;
+    selected: (string | ConcatArray<string>)[];
+    setSelected: ISetSelectedArray;
     checkList: (null | number)[];
     setCheckList: React.Dispatch<React.SetStateAction<(null | number)[]>>;
 }> = ({
@@ -28,17 +26,15 @@ const Option: React.FC<{
     id,
     originData,
     name,
-    selectedMethod,
-    setSelectedMethod,
-    selectedMaterial,
-    setSelectedMaterial,
+    selected,
+    setSelected,
     checkList,
     setCheckList,
 }) => {
     const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
         const target = e.currentTarget;
         if (target.checked) {
-            setSelected(target);
+            setSelected(selected.concat(target.value));
             setCheckList([...checkList, parseInt(target.id)]);
         } else {
             setSelectedInit(target);
@@ -46,43 +42,31 @@ const Option: React.FC<{
         }
     };
 
-    const setSelected = (target: EventTarget & HTMLInputElement) => {
-        if (target.name === METHOD) {
-            setSelectedMethod(selectedMethod.concat(target.value));
-        }
-        if (target.name === MATERIAL) {
-            setSelectedMaterial(selectedMaterial.concat(target.value));
-        }
-    };
-
     const setSelectedInit = (target: EventTarget & HTMLInputElement) => {
         if (target.name === METHOD) {
-            setSelectedMethod(
-                selectedMethod.filter((method) => method !== target.value)
-            );
-        }
-        if (target.name === MATERIAL) {
-            setSelectedMaterial(
-                selectedMaterial.filter((metarial) => metarial !== target.value)
+            setSelected(selected.filter((method) => method !== target.value));
+        } else if (target.name === MATERIAL) {
+            setSelected(
+                selected.filter((metarial) => metarial !== target.value)
             );
         }
     };
-
+    console.log(selected, name);
     useEffect(() => {
         const onFilter = () => {
-            if (!selectedMaterial && !selectedMethod) {
+            if (!selected) {
                 setData(originData);
             } else {
                 const newData = originData.reduce<IRequests[]>((acc, curr) => {
                     const selectedMethodCondition =
-                        selectedMethod && selectedMethod.length > 0
-                            ? selectedMethod.every((i) =>
+                        name === 'method' && selected && selected.length > 0
+                            ? selected.every((i) =>
                                   curr.method.includes(i.toString())
                               )
                             : true;
                     const selectedMaterialCondition =
-                        selectedMaterial && selectedMaterial.length > 0
-                            ? selectedMaterial.every((i) =>
+                        name === 'material' && selected && selected.length > 0
+                            ? selected.every((i) =>
                                   curr.material.includes(i.toString())
                               )
                             : true;
@@ -96,7 +80,7 @@ const Option: React.FC<{
         };
 
         onFilter();
-    }, [selectedMaterial, selectedMethod, checkList, originData]);
+    }, [selected, checkList, originData]);
 
     return (
         <List>

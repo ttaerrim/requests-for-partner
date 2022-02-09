@@ -95,10 +95,8 @@ const Filter: React.FC<{
                         data={data}
                         setData={setData}
                         originData={originData}
-                        selectedMethod={selectedMethod}
-                        setSelectedMethod={setSelectedMethod}
-                        selectedMaterial={selectedMaterial}
-                        setSelectedMaterial={setSelectedMaterial}
+                        selected={selectedMethod}
+                        setSelected={setSelectedMethod}
                         setCheckList={setMethodCheckList}
                         checkList={methodCheckList}
                     />
@@ -123,10 +121,8 @@ const Filter: React.FC<{
                 <OptionHolder>
                     <FilterButton
                         isOpen={isIngreOpen}
-                        selectedMethod={selectedMethod}
-                        setSelectedMethod={setSelectedMethod}
-                        selectedMaterial={selectedMaterial}
-                        setSelectedMaterial={setSelectedMaterial}
+                        selected={selectedMaterial}
+                        setSelected={setSelectedMaterial}
                         buttonData={INGREDIENT}
                         name="material"
                         option={INGREDIENT}

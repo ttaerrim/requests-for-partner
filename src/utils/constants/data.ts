@@ -9,3 +9,12 @@ export const INGREDIENT = [
 
 export const METHOD = 'method';
 export const MATERIAL = 'material';
+
+export const METHODS = { MILLING: '밀링', SHELF: '선반' };
+export const MATERIALS = {
+    ALUMINUM: '알루미늄',
+    CARBON_STEEL: '탄소강',
+    COPPER: '구리',
+    STAINLESS_STEEL: '스테인리스강',
+    STEEL: '강철',
+};

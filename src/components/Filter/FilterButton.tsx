@@ -10,10 +10,8 @@ const FilterButton: React.FC<{
     originData: RequestsArray;
     name: string;
     option: string[];
-    selectedMethod: (string | ConcatArray<string>)[];
-    setSelectedMethod: ISetSelectedArray;
-    selectedMaterial: (string | ConcatArray<string>)[];
-    setSelectedMaterial: ISetSelectedArray;
+    selected: (string | ConcatArray<string>)[];
+    setSelected: ISetSelectedArray;
     checkList: (null | number)[];
     setCheckList: React.Dispatch<React.SetStateAction<(null | number)[]>>;
     isOpen: boolean;
@@ -23,10 +21,8 @@ const FilterButton: React.FC<{
     setData,
     originData,
     name,
-    selectedMethod,
-    setSelectedMethod,
-    selectedMaterial,
-    setSelectedMaterial,
+    selected,
+    setSelected,
     checkList,
     setCheckList,
     isOpen,
@@ -42,10 +38,8 @@ const FilterButton: React.FC<{
                     id={index}
                     setData={setData}
                     originData={originData}
-                    selectedMethod={selectedMethod}
-                    setSelectedMethod={setSelectedMethod}
-                    selectedMaterial={selectedMaterial}
-                    setSelectedMaterial={setSelectedMaterial}
+                    selected={selected}
+                    setSelected={setSelected}
                     setCheckList={setCheckList}
                     checkList={checkList}
                 />
