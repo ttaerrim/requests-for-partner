@@ -11,22 +11,12 @@ import { List } from './styled-filter';
 const Option: React.FC<{
     option: string;
     setData: ISetData;
-    data: RequestsArray;
     originData: RequestsArray;
     name: string;
     id: number;
     selected: (string | ConcatArray<string>)[];
     setSelected: ISetSelectedArray;
-}> = ({
-    option,
-    setData,
-    data,
-    id,
-    originData,
-    name,
-    selected,
-    setSelected,
-}) => {
+}> = ({ option, setData, id, originData, name, selected, setSelected }) => {
     const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
         const target = e.currentTarget;
         if (target.checked) {

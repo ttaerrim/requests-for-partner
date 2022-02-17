@@ -21,11 +21,8 @@ const Contents = () => {
     useEffect(() => {
         const getData = async () => {
             const json = await (await fetch('/requests')).json();
-
-            setData(json);
             setOriginData(json);
         };
-
         getData();
     }, []);
 
@@ -44,11 +41,7 @@ const Contents = () => {
                     <div>파트너님에게 딱 맞는 요청서를 찾아보세요.</div>
                 </Banner>
                 <Filtering>
-                    <Filter
-                        data={data}
-                        setData={setData}
-                        originData={originData}
-                    />
+                    <Filter setData={setData} originData={originData} />
 
                     <Toggle isToggled={isToggled} setIsToggled={setIsToggled} />
                 </Filtering>

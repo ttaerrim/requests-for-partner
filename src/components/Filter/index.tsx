@@ -20,10 +20,9 @@ import {
 import Button from 'layout/Button';
 
 const Filter: React.FC<{
-    data: RequestsArray;
     setData: ISetData;
     originData: RequestsArray;
-}> = ({ data, setData, originData }) => {
+}> = ({ setData, originData }) => {
     const [isMethodOpen, setIsMethodOpen] = useState(false);
     const [isMaterialOpen, setIsMaterialOpen] = useState(false);
     const [selectedMethod, setSelectedMethod] = useState<
@@ -80,7 +79,6 @@ const Filter: React.FC<{
                 <OptionHolder>
                     <FilterButton
                         name="method"
-                        data={data}
                         setData={setData}
                         originData={originData}
                         buttonData={METHOD_LIST}
@@ -110,7 +108,6 @@ const Filter: React.FC<{
                 <OptionHolder>
                     <FilterButton
                         name="material"
-                        data={data}
                         setData={setData}
                         originData={originData}
                         buttonData={MATERIAL_LIST}

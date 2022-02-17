@@ -5,7 +5,6 @@ import { StyledFilterBtn } from './styled-filter';
 
 const FilterButton: React.FC<{
     buttonData: string[];
-    data: RequestsArray;
     setData: ISetData;
     originData: RequestsArray;
     name: string;
@@ -15,7 +14,6 @@ const FilterButton: React.FC<{
     isOpen: boolean;
 }> = ({
     buttonData,
-    data,
     setData,
     originData,
     name,
@@ -30,7 +28,6 @@ const FilterButton: React.FC<{
                     key={index}
                     name={name}
                     option={item}
-                    data={data}
                     id={index}
                     setData={setData}
                     originData={originData}
