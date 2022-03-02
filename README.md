@@ -8,7 +8,6 @@
 
 > 필터링 기능을 주로 맡아 구현하였습니다.
 
-
 -   [x] typescript 구현
 -   [x] 헤더
 -   [x] json-server 사용
@@ -37,7 +36,6 @@
         -   [x] 백그라운드 #000000 50%
         -   [x] 메뉴 화면이 왼쪽에서 들어옴
     -   [x] 백그라운드 영역 탭하면 메뉴 close
-
 
 ## `Installation`
 
@@ -100,7 +98,6 @@ $ npm run start:dev
         ├── pages
         └── utils
             └── constants       # 상수 관리
-
 
 ## `ScreenShot`
 
