@@ -4,78 +4,10 @@
 
 <p align="center"><img width="800" src="https://user-images.githubusercontent.com/43867711/152996199-0eb414c4-0f97-4d30-9578-e6f024cfb325.png" /></p>
 
-## 👨‍👨‍👦‍👦 팀원
+## `Implementation`
 
-|  이름  |                       Github                        | 담당 기능                                                    |
-| :----: | :-------------------------------------------------: | :----------------------------------------------------------- |
-| 우종원 | [Ubermensch0608](https://github.com/Ubermensch0608) | 카드 컴포넌트 구현, 재사용 가능 컴포넌트 구현, 컴포넌트 분리 |
-| 박중섭 |    [crucial-sub](https://github.com/crucial-sub)    | 반응형 헤더 & 메뉴 구현                                      |
-| 이태림 |       [ttaerrim](https://github.com/ttaerrim)       | 필터링 기능 구현                                             |
-| 임수영 |     [penguin311](https://github.com/penguin311)     | CRA 초기 세팅, 토글 기능 구현                                |
+> 필터링 기능을 주로 맡아 구현하였습니다.
 
-## ⚙ 설치
-
-```
-# clone the project
-$ git clone https://github.com/console-lo9/requests-for-partner.git
-
-# install modules
-$ cd requests-for-partner
-$ npm ci
-
-# build
-$ npm run build
-
-# start
-$ npm run start:dev
-
-⠀
-⠀  You can now view this project in the browser.
-⠀  http://localhost:3001/
-⠀
-⠀  Resources
-⠀  https://limitless-fjord-71130.herokuapp.com/requests
-⠀
-```
-
-## 🔗 의존성
-
-```
-  "dependencies": {
-        "@types/jest": "^27.4.0",
-        "@types/node": "^16.11.22",
-        "@types/react": "^17.0.39",
-        "@types/react-dom": "^17.0.11",
-        "concurrently": "^7.0.0",
-        "cross-env": "^7.0.3",
-        "json-server": "^0.17.0",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
-        "react-scripts": "5.0.0",
-        "styled-components": "^5.3.3",
-        "styled-normalize": "^8.0.7",
-        "typescript": "^4.5.5",
-        "web-vitals": "^2.1.4"
-    },
-```
-
-## 📂 파일 구조
-
-    ├── public
-    ├── server
-    └── src
-        ├── assets
-        ├── components
-        │   ├── Cards
-        │   ├── Filter
-        │   ├── Header
-        │   └── Toggle
-        ├── layout              # 재사용 가능 컴포넌트
-        ├── pages
-        └── utils
-            └── constants       # 상수 관리
-
-## ✅ 구현 사항
 
 -   [x] typescript 구현
 -   [x] 헤더
@@ -106,7 +38,71 @@ $ npm run start:dev
         -   [x] 메뉴 화면이 왼쪽에서 들어옴
     -   [x] 백그라운드 영역 탭하면 메뉴 close
 
-## 🧐 한 눈에 보는 기능
+
+## `Installation`
+
+```
+# clone the project
+$ git clone https://github.com/console-lo9/requests-for-partner.git
+
+# install modules
+$ cd requests-for-partner
+$ npm ci
+
+# build
+$ npm run build
+
+# start
+$ npm run start:dev
+
+⠀
+⠀  You can now view this project in the browser.
+⠀  http://localhost:3001/
+⠀
+⠀  Resources
+⠀  https://limitless-fjord-71130.herokuapp.com/requests
+⠀
+```
+
+## `Dependencies`
+
+```
+  "dependencies": {
+        "@types/jest": "^27.4.0",
+        "@types/node": "^16.11.22",
+        "@types/react": "^17.0.39",
+        "@types/react-dom": "^17.0.11",
+        "concurrently": "^7.0.0",
+        "cross-env": "^7.0.3",
+        "json-server": "^0.17.0",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-scripts": "5.0.0",
+        "styled-components": "^5.3.3",
+        "styled-normalize": "^8.0.7",
+        "typescript": "^4.5.5",
+        "web-vitals": "^2.1.4"
+    },
+```
+
+## `Directory`
+
+    ├── public
+    ├── server
+    └── src
+        ├── assets
+        ├── components
+        │   ├── Cards
+        │   ├── Filter
+        │   ├── Header
+        │   └── Toggle
+        ├── layout              # 재사용 가능 컴포넌트
+        ├── pages
+        └── utils
+            └── constants       # 상수 관리
+
+
+## `ScreenShot`
 
 1. 필터링 기능 - 체크박스
 
