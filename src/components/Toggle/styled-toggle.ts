@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { mediaQuery, PC } from 'styles/mediaQuery';
 
 export const DescText = styled.p`
     font-size: 14px;
@@ -8,9 +9,8 @@ export const ToggleDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-right: 1rem;
 
-    @media screen and (max-width: 1431px) {
+    ${mediaQuery(PC)} {
         margin-top: 20px;
         justify-content: flex-start;
     }

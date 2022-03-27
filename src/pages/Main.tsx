@@ -1,13 +1,16 @@
 import Header from 'components/Header';
 import Contents from 'components/Contents';
 import styled from 'styled-components';
+import { Fragment } from 'react';
 
 const Main = () => {
     return (
-        <MainContainer>
+        // <MainContainer>
+        <Fragment>
             <Header />
             <Contents />
-        </MainContainer>
+        </Fragment>
+        // </MainContainer>
     );
 };
 

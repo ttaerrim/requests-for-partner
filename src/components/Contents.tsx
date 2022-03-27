@@ -5,13 +5,7 @@ import Cards from 'components/Cards';
 import Toggle from 'components/Toggle';
 import { RequestsArray } from 'utils/types';
 
-import {
-    Banner,
-    CardsWrapper,
-    Filtering,
-    TopUtils,
-    Wrapper,
-} from './styled-contents';
+import { Banner, Filtering, Wrapper } from './styled-contents';
 
 const Contents = () => {
     const [data, setData] = useState<RequestsArray | null>([]);
@@ -35,21 +29,17 @@ const Contents = () => {
 
     return (
         <Wrapper>
-            <TopUtils>
-                <Banner>
-                    <div>들어온 요청</div>
-                    <div>파트너님에게 딱 맞는 요청서를 찾아보세요.</div>
-                </Banner>
-                <Filtering>
-                    <Filter setData={setData} originData={originData} />
+            <Banner>
+                <div>들어온 요청</div>
+                <div>파트너님에게 딱 맞는 요청서를 찾아보세요.</div>
+            </Banner>
+            <Filtering>
+                <Filter setData={setData} originData={originData} />
 
-                    <Toggle isToggled={isToggled} setIsToggled={setIsToggled} />
-                </Filtering>
-            </TopUtils>
+                <Toggle isToggled={isToggled} setIsToggled={setIsToggled} />
+            </Filtering>
 
-            <CardsWrapper>
-                <Cards data={filteredData} />
-            </CardsWrapper>
+            <Cards data={filteredData} />
         </Wrapper>
     );
 };

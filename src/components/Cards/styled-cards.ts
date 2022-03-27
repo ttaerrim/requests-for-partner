@@ -1,13 +1,20 @@
 import styled from 'styled-components';
+import { mediaQuery, PC_SMALL, TABLET, MOBILE } from 'styles/mediaQuery';
 
-export const CardHolder = styled.div`
+export const CardHolder = styled.section`
     width: inherit;
-    height: 110px;
     margin-top: 32px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    @media screen and (max-width: 592px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+
+    ${mediaQuery(PC_SMALL)} {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    ${mediaQuery(TABLET)} {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    ${mediaQuery(MOBILE)} {
         justify-content: center;
     }
 `;
@@ -15,6 +22,7 @@ export const CardHolder = styled.div`
 export const NoRequestDiv = styled.div`
     width: 100%;
     height: 100px;
+    margin-top: 32px;
     border: 1px solid #c2c2c2;
     border-radius: 4px;
     display: flex;
@@ -24,7 +32,7 @@ export const NoRequestDiv = styled.div`
     font-size: 14px;
 `;
 
-export const StyledCard = styled.div`
+export const StyledCard = styled.article`
     position: relative;
     z-index: 1;
     width: 366px;
@@ -32,13 +40,12 @@ export const StyledCard = styled.div`
     border: 1px solid #e5e5e5;
     border-radius: 4px;
     padding: 24px 16px;
-    margin: 8px;
-    margin-left: 0px;
+    margin: 0;
     &:hover {
         border: 2px solid #2196f3;
         cursor: pointer;
     }
-    @media screen and (max-width: 592px) {
+    ${mediaQuery(MOBILE)} {
         width: 100%;
     }
 `;

@@ -1,16 +1,12 @@
 import styled from 'styled-components';
-
-const size = {
-    mobile: '592px',
-};
+import { mediaQuery, MOBILE } from 'styles/mediaQuery';
 
 const theme = {
-    mobile: `max-width: ${size.mobile}`,
-    notMobile: `min-width: ${size.mobile}`,
+    notMobile: `min-width: ${MOBILE}`,
     headerBgColor: '#1565c0',
 };
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -18,7 +14,7 @@ export const HeaderContainer = styled.div`
     background-color: ${theme.headerBgColor};
     align-items: center;
 
-    @media screen and (${theme.mobile}) {
+    ${mediaQuery(MOBILE)} {
         height: 44px;
         justify-content: space-between;
     }
@@ -41,7 +37,7 @@ export const LeftBox = styled.div`
         background-color: ${theme.headerBgColor};
     }
 
-    @media screen and (${theme.mobile}) {
+    ${mediaQuery(MOBILE)} {
         margin-left: 23px;
 
         & > img:nth-child(1) {
@@ -137,7 +133,7 @@ export const RightBox = styled.div`
         margin: 0 32px;
         border: 1px solid #ffffff;
     }
-    @media screen and (${theme.mobile}) {
+    ${mediaQuery(MOBILE)} {
         display: none;
     }
 `;
