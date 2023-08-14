@@ -1,6 +1,6 @@
 <h1 align="center"> 요청서 관리 과제 </h1>
 
-<h3 align="center"> 서비스 링크: https://limitless-fjord-71130.herokuapp.com/</h3>
+<h3 align="center"> <strike>서비스 링크: https://limitless-fjord-71130.herokuapp.com</strike></h3>
 
 <p align="center"><img width="800" src="https://user-images.githubusercontent.com/43867711/152996199-0eb414c4-0f97-4d30-9578-e6f024cfb325.png" /></p>
 
