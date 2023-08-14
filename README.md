@@ -113,3 +113,14 @@ $ npm run start:dev
 
 <p><img src="https://user-images.githubusercontent.com/43867711/153042232-badf0e8f-b022-4d3d-ac43-fefe188eedd9.gif"></p>
 <p><img src="https://user-images.githubusercontent.com/43867711/153042235-fa195cfd-c2da-44a0-b11c-050041d45144.gif"></p>
+
+## 담당 기능
+
+- 체크박스 필터링 기능
+- mock data를 json-server로 구동
+
+## 배운 점
+
+- `TypeScript`를 활용한 React 프로젝트로 생산성을 향상시킬 수 있었다.
+- `json-server` 를 사용하여 mock data를 API data를 가져오는 것처럼 구현할 수 있다.
+- 필터링 기능을 구현할 때 `Array.reduce()` 메서드로 선택한 모든 요소의 교집합을 반환할 수 있다.
